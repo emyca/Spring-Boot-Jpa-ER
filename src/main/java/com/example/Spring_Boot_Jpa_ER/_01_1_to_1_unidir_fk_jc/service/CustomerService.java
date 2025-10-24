@@ -1,14 +1,12 @@
-package com.example.Spring_Boot_Data_Jpa_ER_H2_Rest.service;
+package com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.service;
 
-import com.example.Spring_Boot_Data_Jpa_ER_H2_Rest.dto.CustomerDtoRequest;
-import com.example.Spring_Boot_Data_Jpa_ER_H2_Rest.entity.Customer;
-
-import java.util.List;
+import com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.dto.CustomerDtoRequest;
+import com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.dto.CustomerDtoResponse;
 
 public interface CustomerService {
-    Customer create(CustomerDtoRequest request);
-    List<Customer> getAll();
-    Customer getById(Long id);
-    Customer updateById(Long id, CustomerDtoRequest request);
-    boolean deleteById(Long id);
+    CustomerDtoResponse create(CustomerDtoRequest request);
+    CustomerDtoResponse getAll();
+    CustomerDtoResponse getById(Long id);
+    CustomerDtoResponse updateById(Long id, CustomerDtoRequest request);
+    CustomerDtoResponse deleteById(Long id);
 }
