@@ -3,6 +3,7 @@
 
 * [Context](#context)
 * [Database](#database)
+* [Example](#example)
 * [REST API](#rest-api)
 * [UML](#uml)
 
@@ -53,6 +54,10 @@ It's empty for now.
 
 Data of the tables will be changed after each REST-request fulfilled.
 You can check it to perform above-mentioned `SELECT` query.
+
+### Example
+
+Code example can be found [here](../../src/main/java/com/example/Spring_Boot_Jpa_ER/_01_1_to_1_unidir_fk_jc).
 
 
 ### REST API
