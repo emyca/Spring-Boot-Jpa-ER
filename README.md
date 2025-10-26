@@ -55,6 +55,7 @@ directions, allowing navigation from both sides of the relationship.
 
 
 ### Tech Stack
+
 * [Spring Framework.](https://spring.io/)
 * [Spring Data JPA.](https://spring.io/projects/spring-data-jpa)
 * [H2 Database.](https://www.h2database.com/html/main.html)
@@ -62,10 +63,12 @@ directions, allowing navigation from both sides of the relationship.
 
 
 ### Examples
+
 * [One-to-One unidirectional mapping through foreign key.](docs/_01_1_to_1_unidir_fk_jc/README.md)
 
 
 ### Resources
+
 * [Understanding JPA/Hibernate Associations.](https://www.baeldung.com/jpa-hibernate-associations)
 * [One-to-One Relationship in JPA.](https://www.baeldung.com/jpa-one-to-one)
 * [Hibernate One to Many Annotation Tutorial.](https://www.baeldung.com/hibernate-one-to-many)
