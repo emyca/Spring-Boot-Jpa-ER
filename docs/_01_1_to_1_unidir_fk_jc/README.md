@@ -1,5 +1,5 @@
 
-<h2>One-to-One unidirectional mapping through foreign key</h3>
+<h2>One-to-One unidirectional mapping through foreign key with @JoinColumn</h3>
 
 * [Context](#context)
 * [Database](#database)
@@ -10,7 +10,7 @@
 ### Context
 
 This provides REST APIs to manipulate data in DB. 
-It uses One-to-One unidirectional mapping through foreign key
+It uses One-to-One unidirectional mapping through foreign key with `@JoinColumn`
 
 ![](./one-to-one-unidir-fk-jc.png)
 
@@ -172,6 +172,8 @@ The REST-request can be run in following ways:
 * `id` does not exist (no data with such `id`).
 * `id` exists.
 * Run the REST-request with the same `id` once more.
+
+Postman collection can be found [here](./REST_API_One-to-One_UniDir_FK_JC.postman_collection.json).
 
 
 ### UML
