@@ -20,14 +20,14 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<CustomerDtoResponse> createCustomer(
             @RequestBody CustomerDtoRequest request) {
-        CustomerDtoResponse response = service.create(request);
+        CustomerDtoResponse response = service.createCustomer(request);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(response);
     }
 
     @GetMapping
     public ResponseEntity<CustomerDtoResponse> getAllCustomers() {
-        CustomerDtoResponse response = service.getAll();
+        CustomerDtoResponse response = service.getAllCustomers();
         return ResponseEntity.status(HttpStatus.OK)
                 .body(response);
     }
@@ -35,7 +35,7 @@ public class CustomerController {
     @GetMapping("/{id}")
     public ResponseEntity<CustomerDtoResponse> getCustomerById(
             @PathVariable("id") Long id) {
-        CustomerDtoResponse response = service.getById(id);
+        CustomerDtoResponse response = service.getCustomerById(id);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(response);
     }
@@ -44,7 +44,7 @@ public class CustomerController {
     public ResponseEntity<CustomerDtoResponse> updateCustomerById(
             @PathVariable("id") Long id,
             @RequestBody CustomerDtoRequest request) {
-        CustomerDtoResponse response = service.updateById(id, request);
+        CustomerDtoResponse response = service.updateCustomerById(id, request);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(response);
     }
@@ -52,7 +52,7 @@ public class CustomerController {
     @DeleteMapping("/{id}")
     public ResponseEntity<CustomerDtoResponse> deleteCustomerById(
             @PathVariable(value = "id") Long id) {
-        CustomerDtoResponse response = (service.deleteById(id));
+        CustomerDtoResponse response = (service.deleteCustomerById(id));
         return ResponseEntity.status(HttpStatus.OK)
                 .body(response);
     }

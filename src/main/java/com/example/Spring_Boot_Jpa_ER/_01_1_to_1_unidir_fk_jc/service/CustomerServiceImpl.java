@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
     private LocationRepository locationRepository;
 
     @Override
-    public CustomerDtoResponse create(CustomerDtoRequest request) {
+    public CustomerDtoResponse createCustomer(CustomerDtoRequest request) {
         Customer customer = customerRepository
                 .saveAndFlush(customerMapper.dtoCreateToEntity(request));
         return (customer != null)
@@ -48,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDtoResponse getAll() {
+    public CustomerDtoResponse getAllCustomers() {
         List<Customer> list = customerRepository.findAll();
         if (!list.isEmpty()) {
             List<CustomerModel> _list = new ArrayList<>();
@@ -73,7 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDtoResponse getById(Long id) {
+    public CustomerDtoResponse getCustomerById(Long id) {
         Customer customer = customerRepository.findById(id)
                 .orElse(null);
         return (customer != null)
@@ -95,7 +95,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDtoResponse updateById(Long id, CustomerDtoRequest request) {
+    public CustomerDtoResponse updateCustomerById(Long id, CustomerDtoRequest request) {
         Optional<Customer> customerOptional = customerRepository.findById(id);
         Optional<Location> locationOptional = locationRepository.findById(id);
         if (customerOptional.isPresent() & locationOptional.isPresent()) {
@@ -123,7 +123,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDtoResponse deleteById(Long id) {
+    public CustomerDtoResponse deleteCustomerById(Long id) {
         if (customerRepository.findById(id).isPresent()) {
             customerRepository.deleteById(id);
             return new CustomerDtoResponse.Builder()
