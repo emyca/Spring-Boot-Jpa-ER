@@ -52,7 +52,7 @@ public class CustomerController {
     @DeleteMapping("/{id}")
     public ResponseEntity<CustomerDtoResponse> deleteCustomerById(
             @PathVariable(value = "id") Long id) {
-        CustomerDtoResponse response = (service.deleteCustomerById(id));
+        CustomerDtoResponse response = service.deleteCustomerById(id);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(response);
     }
