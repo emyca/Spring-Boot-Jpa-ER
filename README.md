@@ -65,6 +65,7 @@ directions, allowing navigation from both sides of the relationship.
 ## Examples
 
 * [One-to-One unidirectional mapping through foreign key with @JoinColumn.](docs/_01_1_to_1_unidir_fk_jc/README.md)
+* [One-to-One bidirectional mapping through foreign key with @JoinColumn.](docs/_02_1_to_1_bidir_fk_jc/README.md)
 
 
 ## Resources
