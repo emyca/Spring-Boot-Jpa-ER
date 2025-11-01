@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "394824a4-59d4-4489-8782-785ddebeaee5",
+		"name": "REST API One-to-One BiDir FK JC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3280496"
+	},
+	"item": [
+		{
+			"name": "Get all Buyers",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/buyers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"buyers"
+					]
+				},
+				"description": "Gets all Buyers list."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Buyers by Address",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/addresses/buyers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"addresses",
+						"buyers"
+					]
+				},
+				"description": "Gets all Buyers by Address"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Buyer by id 1",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/buyers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"buyers",
+						"1"
+					]
+				},
+				"description": "Gets Buyer by id 1. The id:\r\n\r\n* Exists: Buyer is added.\r\n* Does not exist: Buyer is not added.\r\n* Does not exist: Buyer with such id is deleted."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Buyer by id 8",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/buyers/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"buyers",
+						"8"
+					]
+				},
+				"description": "Gets Buyer by id 8. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Buyer 1",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Alice\",\r\n  \"lastName\": \"Sunny\",\r\n  \"email\": \"alice@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Rainbow St.\",\r\n  \"building\": \"15A\",\r\n  \"apartment\": \"125C\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/buyers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"buyers"
+					]
+				},
+				"description": "Adds Buyer 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Buyer 2",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Moon St.\",\r\n  \"building\": \"23\",\r\n  \"apartment\": \"56\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/buyers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"buyers"
+					]
+				},
+				"description": "Adds Buyer 2."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Buyer 3",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Lucy\",\r\n  \"lastName\": \"Moon\",\r\n  \"email\": \"moon@mail.com\",\r\n  \"city\": \"Freeburg\",\r\n  \"street\": \"Broad Rd.\",\r\n  \"building\": \"14\",\r\n  \"apartment\": \"97\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/buyers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"buyers"
+					]
+				},
+				"description": "Adds Buyer 3."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Buyer 4",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Tom\",\r\n  \"lastName\": \"Clark\",\r\n  \"email\": \"tom@mail.com\",\r\n  \"city\": \"Freeburg\",\r\n  \"street\": \"Swift St.\",\r\n  \"building\": \"17\",\r\n  \"apartment\": \"188\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/buyers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"buyers"
+					]
+				},
+				"description": "Adds Buyer 4."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Buyer by id 2",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob.green@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Winter St.\",\r\n  \"building\": \"21\",\r\n  \"apartment\": \"84\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/buyers/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"buyers",
+						"2"
+					]
+				},
+				"description": "Updates Buyer by id 2. The id:\r\n\r\n* Exists: Buyer is added.\r\n* Does not exist: Buyer is not added.\r\n* Does not exist: Buyer with such id is deleted.\r\n\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Buyer by id 7",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob.green@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Winter St.\",\r\n  \"building\": \"21\",\r\n  \"apartment\": \"84\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/buyers/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"buyers",
+						"7"
+					]
+				},
+				"description": "Updates Buyer by id 7. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Buyer by id 3",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/buyers/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"buyers",
+						"3"
+					]
+				},
+				"description": "Deletes Buyer by id 3. The id:\r\n\r\n* Exists: Buyer is added.\r\n* Does not exist: Buyer is not added.\r\n* Does not exist: Buyer with such id is deleted.\r\n\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Buyer by id 9",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/buyers/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"buyers",
+						"9"
+					]
+				},
+				"description": "Deletes Buyer by id 9. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		}
+	]
+}
