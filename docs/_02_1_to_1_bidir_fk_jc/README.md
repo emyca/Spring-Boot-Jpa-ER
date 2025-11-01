@@ -175,7 +175,7 @@ The REST-request can be run in following ways:
 
 Delete a Buyer by `id` (e.g., `id` is `3`)
 ```text
-DELETE http://localhost:8080/api/v1/customers/3
+DELETE http://localhost:8080/api/v1/buyers/3
 ```
 The REST-request can be run in following ways:
 * `id` does not exist (no data with such `id`).
