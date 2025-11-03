@@ -3,6 +3,7 @@ package com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto;
 import com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.model.ClientModel;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import lombok.Getter;
 
 import java.util.List;
 
@@ -70,6 +71,7 @@ public record ClientDtoResponse(
         }
     }
 
+    @Getter
     public enum Message {
 
         SUCCESS_CREATE_MSG("Client has been created successfully."),
@@ -87,8 +89,5 @@ public record ClientDtoResponse(
             this.message = message;
         }
 
-        public String getMessage() {
-            return message;
-        }
     }
 }
