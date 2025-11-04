@@ -10,7 +10,6 @@ import java.util.List;
 public record ClientDtoResponse(
         int status,
         String reasonPhrase,
-        boolean success,
         String message,
         @JsonInclude(Include.NON_NULL)
         ClientModel client,
@@ -21,7 +20,6 @@ public record ClientDtoResponse(
         this(
                 builder.status,
                 builder.reasonPhrase,
-                builder.success,
                 builder.message,
                 builder.client,
                 builder.clientList
@@ -31,7 +29,6 @@ public record ClientDtoResponse(
     public static class Builder {
         int status;
         String reasonPhrase;
-        boolean success;
         String message;
         ClientModel client;
         List<ClientModel> clientList;
@@ -43,11 +40,6 @@ public record ClientDtoResponse(
 
         public Builder reasonPhrase(String reasonPhrase) {
             this.reasonPhrase = reasonPhrase;
-            return this;
-        }
-
-        public Builder success(boolean success) {
-            this.success = success;
             return this;
         }
 
