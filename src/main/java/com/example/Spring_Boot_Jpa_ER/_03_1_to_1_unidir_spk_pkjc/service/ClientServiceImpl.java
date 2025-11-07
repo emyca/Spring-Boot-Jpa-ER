@@ -1,6 +1,5 @@
 package com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.service;
 
-import com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.dto.BuyerDtoResponse;
 import com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.ClientDtoRequest;
 import com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.ClientDtoResponse;
 import com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.entity.Client;
@@ -133,7 +132,7 @@ public class ClientServiceImpl implements ClientService {
             return new ClientDtoResponse.Builder()
                     .status(HttpStatus.OK.value())
                     .reasonPhrase(HttpStatus.OK.getReasonPhrase())
-                    .message(BuyerDtoResponse
+                    .message(ClientDtoResponse
                             .Message.SUCCESS_DELETE_BY_ID_MSG.getMessage()
                             .formatted(id))
                     .build();
@@ -141,7 +140,7 @@ public class ClientServiceImpl implements ClientService {
         return new ClientDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
                 .reasonPhrase(HttpStatus.NOT_FOUND.getReasonPhrase())
-                .message(BuyerDtoResponse
+                .message(ClientDtoResponse
                         .Message.FAILURE_GET_BY_ID_MSG.getMessage()
                         .formatted(id))
                 .build();
