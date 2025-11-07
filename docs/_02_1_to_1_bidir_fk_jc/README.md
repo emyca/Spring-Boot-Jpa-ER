@@ -1,5 +1,5 @@
 
-<h2>One-to-One bidirectional mapping through foreign key with @JoinColumn</h3>
+<h2>One-to-One bidirectional mapping. Foreign key with @JoinColumn</h3>
 
 * [Context](#context)
 * [Database](#database)
