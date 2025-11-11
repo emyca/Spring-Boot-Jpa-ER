@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "55bb7cde-caab-42f5-8205-e2fc42f737b6",
+		"name": "REST API One-to-One BiDir SPK PKJC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3280496"
+	},
+	"item": [
+		{
+			"name": "Get all Purchasers list.",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchasers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchasers"
+					]
+				},
+				"description": "Gets all Purchasers list."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Purchasers by Habitation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/habitations/purchasers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"habitations",
+						"purchasers"
+					]
+				},
+				"description": "Gets all Purchasers by Habitation."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Purchaser by id 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchasers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchasers",
+						"1"
+					]
+				},
+				"description": "Gets Purchaser by id 1. The id:\n\n- Exists: Purchaser is added.\n    \n- Does not exist: Purchaser is not added.\n    \n- Does not exist: Purchaser with such id is deleted."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Purchaser by id 8",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchasers/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchasers",
+						"8"
+					]
+				},
+				"description": "Gets Purchaser by id 8. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Purchaser 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Alice\",\r\n  \"lastName\": \"Sunny\",\r\n  \"email\": \"alice@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Rainbow St.\",\r\n  \"building\": \"15A\",\r\n  \"apartment\": \"125C\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchasers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchasers"
+					]
+				},
+				"description": "Adds Purchaser 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Purchaser 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Moon St.\",\r\n  \"building\": \"23\",\r\n  \"apartment\": \"56\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchasers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchasers"
+					]
+				},
+				"description": "Adds Purchaser 2."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Purchaser 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Lucy\",\r\n  \"lastName\": \"Moon\",\r\n  \"email\": \"moon@mail.com\",\r\n  \"city\": \"Freeburg\",\r\n  \"street\": \"Broad Rd.\",\r\n  \"building\": \"14\",\r\n  \"apartment\": \"97\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchasers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchasers"
+					]
+				},
+				"description": "Adds Purchaser 3."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Purchaser 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Tom\",\r\n  \"lastName\": \"Clark\",\r\n  \"email\": \"tom@mail.com\",\r\n  \"city\": \"Freeburg\",\r\n  \"street\": \"Swift St.\",\r\n  \"building\": \"17\",\r\n  \"apartment\": \"188\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchasers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchasers"
+					]
+				},
+				"description": "Adds Purchaser 4."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Purchaser by id 2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob.green@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Winter St.\",\r\n  \"building\": \"21\",\r\n  \"apartment\": \"84\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchasers/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchasers",
+						"2"
+					]
+				},
+				"description": "Updates Purchaser by id 2. The id:\n\n- Exists: Purchaser is added.\n    \n- Does not exist: Purchaser is not added.\n    \n- Does not exist: Purchaser with such id is deleted."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Purchaser by id 7",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob.green@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Winter St.\",\r\n  \"building\": \"21\",\r\n  \"apartment\": \"84\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchasers/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchasers",
+						"7"
+					]
+				},
+				"description": "Updates Purchaser by id 7. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Purchaser by id 3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchasers/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchasers",
+						"3"
+					]
+				},
+				"description": "Deletes Purchaser by id 3. The id:\n\n- Exists: Purchaser is added.\n    \n- Does not exist: Purchaser is not added.\n    \n- Does not exist: Purchaser with such id is deleted."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Purchaser by id 9",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchasers/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchasers",
+						"9"
+					]
+				},
+				"description": "Deletes Purchaser by id 9. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		}
+	]
+}
