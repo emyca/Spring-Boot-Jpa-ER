@@ -67,6 +67,7 @@ directions, allowing navigation from both sides of the relationship.
 * [One-to-One unidirectional mapping. Foreign key with @JoinColumn.](docs/_01_1_to_1_unidir_fk_jc/README.md)
 * [One-to-One bidirectional mapping. Foreign key with @JoinColumn.](docs/_02_1_to_1_bidir_fk_jc/README.md)
 * [One-to-One unidirectional mapping. Shared primary key with @PrimaryKeyJoinColumn.](docs/_03_1_to_1_unidir_spk_pkjc/README.md)
+* [One-to-One bidirectional mapping. Shared primary key with @PrimaryKeyJoinColumn.](docs/_04_1_to_1_bidir_spk_pkjc/README.md)
 
 
 ## Resources
