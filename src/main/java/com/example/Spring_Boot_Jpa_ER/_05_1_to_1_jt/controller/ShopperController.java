@@ -3,7 +3,6 @@ package com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.controller;
 import com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.dto.ShopperDtoRequest;
 import com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.dto.ShopperDtoResponse;
 import com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.service.ShopperService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1")
 public class ShopperController {
 
-    @Autowired
-    @Qualifier("ShopperServiceImpl")
-    private ShopperService service;
+    private final ShopperService service;
+
+    public ShopperController(
+            @Qualifier("ShopperServiceImpl")
+            ShopperService service) {
+        this.service = service;
+    }
 
     @PostMapping("/shoppers")
     public ResponseEntity<ShopperDtoResponse> createShopper(

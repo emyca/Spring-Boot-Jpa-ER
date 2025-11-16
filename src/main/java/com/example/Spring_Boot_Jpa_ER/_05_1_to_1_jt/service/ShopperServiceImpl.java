@@ -8,7 +8,6 @@ import com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.mapper.ShopperMapper;
 import com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.model.ShopperModel;
 import com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.repository.PlaceRepository;
 import com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.repository.ShopperRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +19,18 @@ import java.util.Optional;
 @Service("ShopperServiceImpl")
 public class ShopperServiceImpl implements ShopperService {
 
-    @Autowired
-    private ShopperMapper shopperMapper;
-    @Autowired
-    private ShopperRepository shopperRepository;
-    @Autowired
-    private PlaceRepository placeRepository;
+    private final ShopperMapper shopperMapper;
+    private final ShopperRepository shopperRepository;
+    private final PlaceRepository placeRepository;
+
+    public ShopperServiceImpl(
+            ShopperMapper shopperMapper,
+            ShopperRepository shopperRepository,
+            PlaceRepository placeRepository) {
+        this.shopperMapper = shopperMapper;
+        this.shopperRepository = shopperRepository;
+        this.placeRepository = placeRepository;
+    }
 
     @Override
     public ShopperDtoResponse createShopper(ShopperDtoRequest request) {
