@@ -8,7 +8,6 @@ import com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.mapper.BuyerMapper;
 import com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.model.BuyerModel;
 import com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.repository.AddressRepository;
 import com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.repository.BuyerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +19,18 @@ import java.util.Optional;
 @Service("BuyerServiceImpl")
 public class BuyerServiceImpl implements BuyerService {
 
-    @Autowired
-    private BuyerMapper buyerMapper;
-    @Autowired
-    private BuyerRepository buyerRepository;
-    @Autowired
-    private AddressRepository addressRepository;
+    private final BuyerMapper buyerMapper;
+    private final BuyerRepository buyerRepository;
+    private final AddressRepository addressRepository;
+
+    public BuyerServiceImpl(
+            BuyerMapper buyerMapper,
+            BuyerRepository buyerRepository,
+            AddressRepository addressRepository) {
+        this.buyerMapper = buyerMapper;
+        this.buyerRepository = buyerRepository;
+        this.addressRepository = addressRepository;
+    }
 
     @Override
     public BuyerDtoResponse createBuyer(BuyerDtoRequest request) {

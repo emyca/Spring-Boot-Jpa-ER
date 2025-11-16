@@ -3,7 +3,6 @@ package com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.controller;
 import com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.dto.BuyerDtoRequest;
 import com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.dto.BuyerDtoResponse;
 import com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.service.BuyerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1")
 public class BuyerController {
 
-    @Autowired
-    @Qualifier("BuyerServiceImpl")
-    private BuyerService service;
+    private final BuyerService service;
+
+    public BuyerController(
+            @Qualifier("BuyerServiceImpl")
+            BuyerService service) {
+        this.service = service;
+    }
 
     @PostMapping("/buyers")
     public ResponseEntity<BuyerDtoResponse> createBuyer(
