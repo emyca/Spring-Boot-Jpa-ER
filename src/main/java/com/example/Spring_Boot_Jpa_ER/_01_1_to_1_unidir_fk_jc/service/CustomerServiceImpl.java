@@ -8,7 +8,6 @@ import com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.mapper.CustomerMap
 import com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.model.CustomerModel;
 import com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.repository.CustomerRepository;
 import com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.repository.LocationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +19,18 @@ import java.util.Optional;
 @Service("CustomerServiceImpl")
 public class CustomerServiceImpl implements CustomerService {
 
-    @Autowired
-    private CustomerMapper customerMapper;
-    @Autowired
-    private CustomerRepository customerRepository;
-    @Autowired
-    private LocationRepository locationRepository;
+    private final CustomerMapper customerMapper;
+    private final CustomerRepository customerRepository;
+    private final LocationRepository locationRepository;
+
+    public CustomerServiceImpl(
+            CustomerMapper customerMapper,
+            CustomerRepository customerRepository,
+            LocationRepository locationRepository) {
+        this.customerMapper = customerMapper;
+        this.customerRepository = customerRepository;
+        this.locationRepository = locationRepository;
+    }
 
     @Override
     public CustomerDtoResponse createCustomer(CustomerDtoRequest request) {
