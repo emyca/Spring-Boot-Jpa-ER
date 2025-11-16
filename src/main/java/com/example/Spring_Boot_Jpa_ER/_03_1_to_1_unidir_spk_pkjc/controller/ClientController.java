@@ -3,7 +3,6 @@ package com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.controller;
 import com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.ClientDtoRequest;
 import com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.ClientDtoResponse;
 import com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.service.ClientService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/clients")
 public class ClientController {
 
-    @Autowired
-    @Qualifier("ClientServiceImpl")
-    private ClientService service;
+    private final ClientService service;
+
+    public ClientController(
+            @Qualifier("ClientServiceImpl")
+            ClientService service) {
+        this.service = service;
+    }
 
     @PostMapping
     public ResponseEntity<ClientDtoResponse> createClient(

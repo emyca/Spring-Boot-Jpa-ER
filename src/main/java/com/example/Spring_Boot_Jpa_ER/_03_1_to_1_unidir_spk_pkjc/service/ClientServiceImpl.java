@@ -8,7 +8,6 @@ import com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.mapper.ClientMa
 import com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.model.ClientModel;
 import com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.repository.ClientRepository;
 import com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.repository.ResidenceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +19,18 @@ import java.util.Optional;
 @Service("ClientServiceImpl")
 public class ClientServiceImpl implements ClientService {
 
-    @Autowired
-    private ClientMapper clientMapper;
-    @Autowired
-    private ClientRepository clientRepository;
-    @Autowired
-    private ResidenceRepository residenceRepository;
+    private final ClientMapper clientMapper;
+    private final ClientRepository clientRepository;
+    private final ResidenceRepository residenceRepository;
+
+    public ClientServiceImpl(
+            ClientMapper clientMapper,
+            ClientRepository clientRepository,
+            ResidenceRepository residenceRepository) {
+        this.clientMapper = clientMapper;
+        this.clientRepository = clientRepository;
+        this.residenceRepository = residenceRepository;
+    }
 
     @Override
     public ClientDtoResponse createClient(ClientDtoRequest request) {
