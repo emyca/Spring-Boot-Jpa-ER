@@ -8,7 +8,6 @@ import com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.mapper.Purchaser
 import com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.model.PurchaserModel;
 import com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.repository.HabitationRepository;
 import com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.repository.PurchaserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +19,18 @@ import java.util.Optional;
 @Service("PurchaserServiceImpl")
 public class PurchaserServiceImpl implements PurchaserService {
 
-    @Autowired
-    private PurchaserMapper purchaserMapper;
-    @Autowired
-    private PurchaserRepository purchaserRepository;
-    @Autowired
-    private HabitationRepository habitationRepository;
+    private final PurchaserMapper purchaserMapper;
+    private final PurchaserRepository purchaserRepository;
+    private final HabitationRepository habitationRepository;
+
+    public PurchaserServiceImpl(
+            PurchaserMapper purchaserMapper,
+            PurchaserRepository purchaserRepository,
+            HabitationRepository habitationRepository) {
+        this.purchaserMapper = purchaserMapper;
+        this.purchaserRepository = purchaserRepository;
+        this.habitationRepository = habitationRepository;
+    }
 
     @Override
     public PurchaserDtoResponse createPurchaser(PurchaserDtoRequest request) {
