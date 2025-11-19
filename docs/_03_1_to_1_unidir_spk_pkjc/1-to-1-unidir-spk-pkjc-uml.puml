@@ -1,0 +1,159 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.service.ClientServiceImpl {
+- ClientMapper clientMapper
+- ClientRepository clientRepository
+- ResidenceRepository residenceRepository
++ ClientDtoResponse createClient(ClientDtoRequest)
++ ClientDtoResponse getAllClients()
++ ClientDtoResponse getClientById(Long)
++ ClientDtoResponse updateClientById(Long,ClientDtoRequest)
++ ClientDtoResponse deleteClientById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.mapper.ResidenceMapper {
++ Residence dtoCreateToEntity(ClientDtoRequest)
++ Residence dtoUpdateToEntity(ClientDtoRequest,Residence)
+}
+
+class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.ClientDtoRequest {
+- Long id
+- String firstName
+- String lastName
+- String email
+- String city
+- String street
+- String building
+- String apartment
++ String lastName()
++ String firstName()
++ String apartment()
++ String street()
++ String building()
++ String city()
++ String email()
++ Long id()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.model.ClientModel {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Residence residence
++ {static} ClientModel getModel(Client)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.entity.Client {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Residence residence
+}
+
+class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.entity.Residence {
+- Long id
+- String city
+- String street
+- String building
+- String apartment
+}
+
+interface com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.service.ClientService {
+~ ClientDtoResponse createClient(ClientDtoRequest)
+~ ClientDtoResponse getAllClients()
+~ ClientDtoResponse getClientById(Long)
+~ ClientDtoResponse updateClientById(Long,ClientDtoRequest)
+~ ClientDtoResponse deleteClientById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.controller.ClientController {
+- ClientService service
++ ResponseEntity<ClientDtoResponse> createClient(ClientDtoRequest)
++ ResponseEntity<ClientDtoResponse> getAllClients()
++ ResponseEntity<ClientDtoResponse> getClientById(Long)
++ ResponseEntity<ClientDtoResponse> updateClientById(Long,ClientDtoRequest)
++ ResponseEntity<ClientDtoResponse> deleteClientById(Long)
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.repository.ClientRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.ClientDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- ClientModel client
+- List<ClientModel> clientList
+~ int status
+~ String reasonPhrase
+~ String message
+~ ClientModel client
+~ List<ClientModel> clientList
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder client(ClientModel)
++ Builder clientList(List<ClientModel>)
++ ClientDtoResponse build()
++ int status()
++ String message()
++ String reasonPhrase()
++ ClientModel client()
++ List<ClientModel> clientList()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.ClientDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ ClientModel client
+~ List<ClientModel> clientList
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder client(ClientModel)
++ Builder clientList(List<ClientModel>)
++ ClientDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+interface com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.repository.ResidenceRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.mapper.ClientMapper {
++ Client dtoCreateToEntity(ClientDtoRequest)
++ Client dtoUpdateByIdToEntity(Long,ClientDtoRequest,Client,Residence)
+}
+
+
+
+com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.service.ClientService <|.. com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.service.ClientServiceImpl
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.repository.ClientRepository
+com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.ClientDtoResponse +.. com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.ClientDtoResponse$Builder
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.repository.ResidenceRepository
+@enduml
