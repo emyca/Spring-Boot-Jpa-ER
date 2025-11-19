@@ -1,0 +1,164 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.entity.Habitation {
+- Long id
+- String city
+- String street
+- String building
+- String apartment
+- Purchaser purchaser
+}
+
+class com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.service.PurchaserServiceImpl {
+- PurchaserMapper purchaserMapper
+- PurchaserRepository purchaserRepository
+- HabitationRepository habitationRepository
++ PurchaserDtoResponse createPurchaser(PurchaserDtoRequest)
++ PurchaserDtoResponse getAllPurchasers()
++ PurchaserDtoResponse getAllPurchasersByHabitation()
++ PurchaserDtoResponse getPurchaserById(Long)
++ PurchaserDtoResponse updatePurchaserById(Long,PurchaserDtoRequest)
++ PurchaserDtoResponse deletePurchaserById(Long)
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.repository.PurchaserRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.dto.PurchaserDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- PurchaserModel purchaser
+- List<PurchaserModel> purchaserList
+~ int status
+~ String reasonPhrase
+~ String message
+~ PurchaserModel purchaser
+~ List<PurchaserModel> purchaserList
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder purchaser(PurchaserModel)
++ Builder purchaserList(List<PurchaserModel>)
++ PurchaserDtoResponse build()
++ int status()
++ String message()
++ String reasonPhrase()
++ List<PurchaserModel> purchaserList()
++ PurchaserModel purchaser()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.dto.PurchaserDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ PurchaserModel purchaser
+~ List<PurchaserModel> purchaserList
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder purchaser(PurchaserModel)
++ Builder purchaserList(List<PurchaserModel>)
++ PurchaserDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+interface com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.repository.HabitationRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.entity.Purchaser {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Habitation habitation
+}
+
+class com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.controller.PurchaserController {
+- PurchaserService service
++ ResponseEntity<PurchaserDtoResponse> createPurchaser(PurchaserDtoRequest)
++ ResponseEntity<PurchaserDtoResponse> getAllPurchasers()
++ ResponseEntity<PurchaserDtoResponse> getAllPurchasersByHabitation()
++ ResponseEntity<PurchaserDtoResponse> getPurchaserById(Long)
++ ResponseEntity<PurchaserDtoResponse> updatePurchaserById(Long,PurchaserDtoRequest)
++ ResponseEntity<PurchaserDtoResponse> deletePurchaserById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.mapper.PurchaserMapper {
++ Purchaser dtoCreateToEntity(PurchaserDtoRequest)
++ Purchaser dtoUpdateByIdToEntity(Long,PurchaserDtoRequest,Purchaser,Habitation)
+}
+
+class com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.mapper.HabitationMapper {
++ Habitation dtoCreateToEntity(PurchaserDtoRequest)
++ Habitation dtoUpdateToEntity(PurchaserDtoRequest,Habitation)
+}
+
+class com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.dto.PurchaserDtoRequest {
+- Long id
+- String firstName
+- String lastName
+- String email
+- String city
+- String street
+- String building
+- String apartment
++ String lastName()
++ String firstName()
++ String apartment()
++ String street()
++ String building()
++ String city()
++ String email()
++ Long id()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.model.PurchaserModel {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Habitation habitation
++ {static} PurchaserModel getModel(Purchaser)
++ {static} PurchaserModel getModel(Habitation)
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.service.PurchaserService {
+~ PurchaserDtoResponse createPurchaser(PurchaserDtoRequest)
+~ PurchaserDtoResponse getAllPurchasers()
+~ PurchaserDtoResponse getAllPurchasersByHabitation()
+~ PurchaserDtoResponse getPurchaserById(Long)
+~ PurchaserDtoResponse updatePurchaserById(Long,PurchaserDtoRequest)
+~ PurchaserDtoResponse deletePurchaserById(Long)
+}
+
+
+
+com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.service.PurchaserService <|.. com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.service.PurchaserServiceImpl
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.repository.PurchaserRepository
+com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.dto.PurchaserDtoResponse +.. com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.dto.PurchaserDtoResponse$Builder
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.repository.HabitationRepository
+@enduml
