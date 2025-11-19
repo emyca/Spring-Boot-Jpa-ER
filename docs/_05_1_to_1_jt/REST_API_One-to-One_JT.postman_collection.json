@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "f16910b0-b5b8-4419-b1ae-35774b364270",
+		"name": "REST API One-to-One JT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3280496"
+	},
+	"item": [
+		{
+			"name": "Get all Shoppers list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/shoppers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"shoppers"
+					]
+				},
+				"description": "Gets all Shoppers list."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Shoppers by Place",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/places/shoppers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"places",
+						"shoppers"
+					]
+				},
+				"description": "Gets all Shoppers by Place."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Shopper by id 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/shoppers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"shoppers",
+						"1"
+					]
+				},
+				"description": "Gets Shopper by id 1. The id:\n\n- Exists: Shopper is added.\n    \n- Does not exist: Shopper is not added.\n    \n- Does not exist: Shopper with such id is deleted."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Shopper by id 8",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/shoppers/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"shoppers",
+						"8"
+					]
+				},
+				"description": "Gets Shopper by id 8. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Shopper 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Alice\",\r\n  \"lastName\": \"Sunny\",\r\n  \"email\": \"alice@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Rainbow St.\",\r\n  \"building\": \"15A\",\r\n  \"apartment\": \"125C\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/shoppers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"shoppers"
+					]
+				},
+				"description": "Adds Shopper 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Shopper 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Moon St.\",\r\n  \"building\": \"23\",\r\n  \"apartment\": \"56\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/shoppers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"shoppers"
+					]
+				},
+				"description": "Adds Shopper 2."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Shopper 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Lucy\",\r\n  \"lastName\": \"Moon\",\r\n  \"email\": \"moon@mail.com\",\r\n  \"city\": \"Freeburg\",\r\n  \"street\": \"Broad Rd.\",\r\n  \"building\": \"14\",\r\n  \"apartment\": \"97\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/shoppers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"shoppers"
+					]
+				},
+				"description": "Adds Shopper 3."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Shopper 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Tom\",\r\n  \"lastName\": \"Clark\",\r\n  \"email\": \"tom@mail.com\",\r\n  \"city\": \"Freeburg\",\r\n  \"street\": \"Swift St.\",\r\n  \"building\": \"17\",\r\n  \"apartment\": \"188\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/shoppers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"shoppers"
+					]
+				},
+				"description": "Adds Shopper 4."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Shopper by id 2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob.green@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Winter St.\",\r\n  \"building\": \"21\",\r\n  \"apartment\": \"84\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/shoppers/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"shoppers",
+						"2"
+					]
+				},
+				"description": "Updates Shopper by id 2. The id:\n\n- Exists: Shopper is added.\n    \n- Does not exist: Shopper is not added.\n    \n- Does not exist: Shopper with such id is deleted."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Shopper by id 7",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob.green@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Winter St.\",\r\n  \"building\": \"21\",\r\n  \"apartment\": \"84\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/shoppers/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"shoppers",
+						"7"
+					]
+				},
+				"description": "Updates Shopper by id 7. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Shopper by id 3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/shoppers/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"shoppers",
+						"3"
+					]
+				},
+				"description": "Deletes Shopper by id 3. The id:\n\n- Exists: Shopper is added.\n    \n- Does not exist: Shopper is not added.\n    \n- Does not exist: Shopper with such id is deleted."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Shopper by id 9",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/shoppers/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"shoppers",
+						"9"
+					]
+				},
+				"description": "Deletes Shopper by id 9. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		}
+	]
+}
