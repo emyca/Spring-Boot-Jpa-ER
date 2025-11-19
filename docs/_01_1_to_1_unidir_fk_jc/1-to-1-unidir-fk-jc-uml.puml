@@ -1,0 +1,162 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.service.CustomerServiceImpl {
+- CustomerMapper customerMapper
+- CustomerRepository customerRepository
+- LocationRepository locationRepository
++ CustomerDtoResponse createCustomer(CustomerDtoRequest)
++ CustomerDtoResponse getAllCustomers()
++ CustomerDtoResponse getCustomerById(Long)
++ CustomerDtoResponse updateCustomerById(Long,CustomerDtoRequest)
++ CustomerDtoResponse deleteCustomerById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.mapper.CustomerMapper {
++ Customer dtoCreateToEntity(CustomerDtoRequest)
++ Customer dtoUpdateByIdToEntity(Long,CustomerDtoRequest,Customer,Location)
+}
+
+class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.dto.CustomerDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- CustomerModel customer
+- List<CustomerModel> customerList
+~ int status
+~ String reasonPhrase
+~ String message
+~ CustomerModel customer
+~ List<CustomerModel> customerList
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder customer(CustomerModel)
++ Builder customerList(List<CustomerModel>)
++ CustomerDtoResponse build()
++ int status()
++ String message()
++ CustomerModel customer()
++ String reasonPhrase()
++ List<CustomerModel> customerList()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.dto.CustomerDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ CustomerModel customer
+~ List<CustomerModel> customerList
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder customer(CustomerModel)
++ Builder customerList(List<CustomerModel>)
++ CustomerDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.mapper.LocationMapper {
++ Location dtoCreateToEntity(CustomerDtoRequest)
++ Location dtoUpdateToEntity(CustomerDtoRequest,Location)
+}
+
+class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.entity.Location {
+- Long id
+- String city
+- String street
+- String building
+- String apartment
+}
+
+interface com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.repository.CustomerRepository {
+}
+interface com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.service.CustomerService {
+~ CustomerDtoResponse createCustomer(CustomerDtoRequest)
+~ CustomerDtoResponse getAllCustomers()
+~ CustomerDtoResponse getCustomerById(Long)
+~ CustomerDtoResponse updateCustomerById(Long,CustomerDtoRequest)
+~ CustomerDtoResponse deleteCustomerById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.dto.CustomerDtoRequest {
+- Long id
+- String firstName
+- String lastName
+- String email
+- String city
+- String street
+- String building
+- String apartment
++ String lastName()
++ String firstName()
++ String apartment()
++ String street()
++ String building()
++ String city()
++ String email()
++ Long id()
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.repository.LocationRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.model.CustomerModel {
+- Long id
+- String firstName
+- String lastName
+- String email
+- String city
+- String street
+- String building
+- String apartment
++ {static} CustomerModel getModel(Customer)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.controller.CustomerController {
+- CustomerService service
++ ResponseEntity<CustomerDtoResponse> createCustomer(CustomerDtoRequest)
++ ResponseEntity<CustomerDtoResponse> getAllCustomers()
++ ResponseEntity<CustomerDtoResponse> getCustomerById(Long)
++ ResponseEntity<CustomerDtoResponse> updateCustomerById(Long,CustomerDtoRequest)
++ ResponseEntity<CustomerDtoResponse> deleteCustomerById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.entity.Customer {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Location location
+}
+
+
+
+com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.service.CustomerService <|.. com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.service.CustomerServiceImpl
+com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.dto.CustomerDtoResponse +.. com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.dto.CustomerDtoResponse$Builder
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.repository.CustomerRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.repository.LocationRepository
+@enduml
