@@ -1,0 +1,164 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.model.ShopperModel {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Place place
++ {static} ShopperModel getModel(Shopper)
++ {static} ShopperModel getModel(Place)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.entity.Place {
+- Long id
+- String city
+- String street
+- String building
+- String apartment
+- Shopper shopper
+}
+
+class com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.mapper.PlaceMapper {
++ Place dtoCreateToEntity(ShopperDtoRequest)
++ Place dtoUpdateToEntity(ShopperDtoRequest,Place)
+}
+
+interface com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.repository.PlaceRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.entity.Shopper {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Place place
+}
+
+class com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.controller.ShopperController {
+- ShopperService service
++ ResponseEntity<ShopperDtoResponse> createShopper(ShopperDtoRequest)
++ ResponseEntity<ShopperDtoResponse> getAllShoppers()
++ ResponseEntity<ShopperDtoResponse> getAllShoppersByPlace()
++ ResponseEntity<ShopperDtoResponse> getShopperById(Long)
++ ResponseEntity<ShopperDtoResponse> updateShopperById(Long,ShopperDtoRequest)
++ ResponseEntity<ShopperDtoResponse> deleteShopperById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.dto.ShopperDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- ShopperModel shopper
+- List<ShopperModel> shopperList
+~ int status
+~ String reasonPhrase
+~ String message
+~ ShopperModel shopper
+~ List<ShopperModel> shopperList
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder shopper(ShopperModel)
++ Builder shopperList(List<ShopperModel>)
++ ShopperDtoResponse build()
++ int status()
++ String message()
++ String reasonPhrase()
++ ShopperModel shopper()
++ List<ShopperModel> shopperList()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.dto.ShopperDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ ShopperModel shopper
+~ List<ShopperModel> shopperList
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder shopper(ShopperModel)
++ Builder shopperList(List<ShopperModel>)
++ ShopperDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.dto.ShopperDtoRequest {
+- Long id
+- String firstName
+- String lastName
+- String email
+- String city
+- String street
+- String building
+- String apartment
++ String lastName()
++ String firstName()
++ String apartment()
++ String street()
++ String building()
++ String city()
++ String email()
++ Long id()
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.repository.ShopperRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.mapper.ShopperMapper {
++ Shopper dtoCreateToEntity(ShopperDtoRequest)
++ Shopper dtoUpdateByIdToEntity(Long,ShopperDtoRequest,Shopper,Place)
+}
+
+class com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.service.ShopperServiceImpl {
+- ShopperMapper shopperMapper
+- ShopperRepository shopperRepository
+- PlaceRepository placeRepository
++ ShopperDtoResponse createShopper(ShopperDtoRequest)
++ ShopperDtoResponse getAllShoppers()
++ ShopperDtoResponse getAllShoppersByPlace()
++ ShopperDtoResponse getShopperById(Long)
++ ShopperDtoResponse updateShopperById(Long,ShopperDtoRequest)
++ ShopperDtoResponse deleteShopperById(Long)
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.service.ShopperService {
+~ ShopperDtoResponse createShopper(ShopperDtoRequest)
+~ ShopperDtoResponse getAllShoppers()
+~ ShopperDtoResponse getAllShoppersByPlace()
+~ ShopperDtoResponse getShopperById(Long)
+~ ShopperDtoResponse updateShopperById(Long,ShopperDtoRequest)
+~ ShopperDtoResponse deleteShopperById(Long)
+}
+
+
+
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.repository.PlaceRepository
+com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.dto.ShopperDtoResponse +.. com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.dto.ShopperDtoResponse$Builder
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.repository.ShopperRepository
+com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.service.ShopperService <|.. com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.service.ShopperServiceImpl
+@enduml
