@@ -187,4 +187,6 @@ Postman collection can be found [here](./REST_API_One-to-One_BiDir_FK_JC.postman
 
 ### UML
 
-UML class-diagram image can be found [here](./1-to-1-bidir-fk-jc-uml.png).
+UML class-diagram can be found [here](./1-to-1-bidir-fk-jc-uml.puml).
+To read and preview PlantUML (`.puml`) files in IntelliJ IDEA, you need
+to install the `plantuml4idea` plugin.
