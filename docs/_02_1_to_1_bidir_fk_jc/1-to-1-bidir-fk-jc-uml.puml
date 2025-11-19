@@ -1,0 +1,164 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.entity.Address {
+- Long id
+- String city
+- String street
+- String building
+- String apartment
+- Buyer buyer
+}
+
+interface com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.repository.BuyerRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.entity.Buyer {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Address address
+}
+
+class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.controller.BuyerController {
+- BuyerService service
++ ResponseEntity<BuyerDtoResponse> createBuyer(BuyerDtoRequest)
++ ResponseEntity<BuyerDtoResponse> getAllBuyers()
++ ResponseEntity<BuyerDtoResponse> getAllBuyersByAddress()
++ ResponseEntity<BuyerDtoResponse> getBuyerById(Long)
++ ResponseEntity<BuyerDtoResponse> updateBuyerById(Long,BuyerDtoRequest)
++ ResponseEntity<BuyerDtoResponse> deleteBuyerById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.mapper.AddressMapper {
++ Address dtoCreateToEntity(BuyerDtoRequest)
++ Address dtoUpdateToEntity(BuyerDtoRequest,Address)
+}
+
+class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.service.BuyerServiceImpl {
+- BuyerMapper buyerMapper
+- BuyerRepository buyerRepository
+- AddressRepository addressRepository
++ BuyerDtoResponse createBuyer(BuyerDtoRequest)
++ BuyerDtoResponse getAllBuyers()
++ BuyerDtoResponse getAllBuyersByAddress()
++ BuyerDtoResponse getBuyerById(Long)
++ BuyerDtoResponse updateBuyerById(Long,BuyerDtoRequest)
++ BuyerDtoResponse deleteBuyerById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.mapper.BuyerMapper {
++ Buyer dtoCreateToEntity(BuyerDtoRequest)
++ Buyer dtoUpdateByIdToEntity(Long,BuyerDtoRequest,Buyer,Address)
+}
+
+interface com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.repository.AddressRepository {
+}
+interface com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.service.BuyerService {
+~ BuyerDtoResponse createBuyer(BuyerDtoRequest)
+~ BuyerDtoResponse getAllBuyers()
+~ BuyerDtoResponse getAllBuyersByAddress()
+~ BuyerDtoResponse getBuyerById(Long)
+~ BuyerDtoResponse updateBuyerById(Long,BuyerDtoRequest)
+~ BuyerDtoResponse deleteBuyerById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.dto.BuyerDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- BuyerModel buyer
+- List<BuyerModel> buyerList
+~ int status
+~ String reasonPhrase
+~ String message
+~ BuyerModel buyer
+~ List<BuyerModel> buyerList
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder buyer(BuyerModel)
++ Builder buyerList(List<BuyerModel>)
++ BuyerDtoResponse build()
++ int status()
++ String message()
++ String reasonPhrase()
++ BuyerModel buyer()
++ List<BuyerModel> buyerList()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.dto.BuyerDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ BuyerModel buyer
+~ List<BuyerModel> buyerList
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder buyer(BuyerModel)
++ Builder buyerList(List<BuyerModel>)
++ BuyerDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.model.BuyerModel {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Address address
++ {static} BuyerModel getModel(Buyer)
++ {static} BuyerModel getModel(Address)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.dto.BuyerDtoRequest {
+- Long id
+- String firstName
+- String lastName
+- String email
+- String city
+- String street
+- String building
+- String apartment
++ String lastName()
++ String firstName()
++ String apartment()
++ String street()
++ String building()
++ String city()
++ String email()
++ Long id()
+}
+
+
+
+
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.repository.BuyerRepository
+com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.service.BuyerService <|.. com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.service.BuyerServiceImpl
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.repository.AddressRepository
+com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.dto.BuyerDtoResponse +.. com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.dto.BuyerDtoResponse$Builder
+@enduml
