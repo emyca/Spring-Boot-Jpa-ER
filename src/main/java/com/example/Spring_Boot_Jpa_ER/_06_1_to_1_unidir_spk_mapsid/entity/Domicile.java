@@ -1,0 +1,27 @@
+package com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@Entity(name = "domiciles")
+public class Domicile {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "city")
+    private String city;
+    @Column(name = "street")
+    private String street;
+    @Column(name = "building")
+    private String building;
+    @Column(name = "apartment")
+    private String apartment;
+}
