@@ -1,0 +1,313 @@
+{
+	"info": {
+		"_postman_id": "2a03c632-65f9-498d-8f53-41eb6ab2f04d",
+		"name": "REST API One-to-One UniDir SPK MAPSID",
+		"description": "REST API One-to-One UniDir SPK MAPSID",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3280496"
+	},
+	"item": [
+		{
+			"name": "Get all Consumers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/consumers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"consumers"
+					]
+				},
+				"description": "Gets all Consumers list."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Consumer by id 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/consumers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"consumers",
+						"1"
+					]
+				},
+				"description": "Gets Consumer by id 1. The id:\n\n- Exists: Consumer is added.\n    \n- Does not exist: Consumer is not added.\n    \n- Does not exist: Consumer with such id is deleted."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Consumer by id 8",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/consumers/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"consumers",
+						"8"
+					]
+				},
+				"description": "Gets Consumer by id 8. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Consumer 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Alice\",\r\n  \"lastName\": \"Sunny\",\r\n  \"email\": \"alice@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Rainbow St.\",\r\n  \"building\": \"15A\",\r\n  \"apartment\": \"125C\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/consumers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"consumers"
+					]
+				},
+				"description": "Adds Consumer 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Consumer 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Moon St.\",\r\n  \"building\": \"23\",\r\n  \"apartment\": \"56\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/consumers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"consumers"
+					]
+				},
+				"description": "Adds Consumer 2."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Consumer 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Lucy\",\r\n  \"lastName\": \"Moon\",\r\n  \"email\": \"moon@mail.com\",\r\n  \"city\": \"Freeburg\",\r\n  \"street\": \"Broad Rd.\",\r\n  \"building\": \"14\",\r\n  \"apartment\": \"97\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/consumers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"consumers"
+					]
+				},
+				"description": "Adds Consumer 3."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Consumer 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Tom\",\r\n  \"lastName\": \"Clark\",\r\n  \"email\": \"tom@mail.com\",\r\n  \"city\": \"Freeburg\",\r\n  \"street\": \"Swift St.\",\r\n  \"building\": \"17\",\r\n  \"apartment\": \"188\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/consumers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"consumers"
+					]
+				},
+				"description": "Adds Consumer 4."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Consumer by id 2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob.green@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Winter St.\",\r\n  \"building\": \"21\",\r\n  \"apartment\": \"84\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/consumers/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"consumers",
+						"2"
+					]
+				},
+				"description": "Updates Consumer by id 2. The id:\n\n- Exists: Consumer is added.\n    \n- Does not exist: Consumer is not added.\n    \n- Does not exist: Consumer with such id is deleted."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Consumer by id 7",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob.green@mail.com\",\r\n  \"city\": \"LightCity\",\r\n  \"street\": \"Winter St.\",\r\n  \"building\": \"21\",\r\n  \"apartment\": \"84\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/consumers/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"consumers",
+						"7"
+					]
+				},
+				"description": "Updates Consumer by id 7. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Consumer by id 3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/consumers/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"consumers",
+						"3"
+					]
+				},
+				"description": "Deletes Consumer by id 3. The id:\n\n- Exists: Consumer is added.\n    \n- Does not exist: Consumer is not added.\n    \n- Does not exist: Consumer with such id is deleted."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Consumer by id 9",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/consumers/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"consumers",
+						"9"
+					]
+				},
+				"description": "Deletes Consumer by id 9. The id is proposed to be not existing ever for testing purpose."
+			},
+			"response": []
+		}
+	]
+}
