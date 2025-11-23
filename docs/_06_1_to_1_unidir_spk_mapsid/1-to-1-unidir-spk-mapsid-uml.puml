@@ -1,0 +1,159 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.entity.Consumer {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Domicile domicile
+}
+
+interface com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.service.ConsumerService {
+~ ConsumerDtoResponse createConsumer(ConsumerDtoRequest)
+~ ConsumerDtoResponse getAllConsumers()
+~ ConsumerDtoResponse getConsumerById(Long)
+~ ConsumerDtoResponse updateConsumerById(Long,ConsumerDtoRequest)
+~ ConsumerDtoResponse deleteConsumerById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.controller.ConsumerController {
+- ConsumerService service
++ ResponseEntity<ConsumerDtoResponse> createConsumer(ConsumerDtoRequest)
++ ResponseEntity<ConsumerDtoResponse> getAllConsumers()
++ ResponseEntity<ConsumerDtoResponse> getConsumerById(Long)
++ ResponseEntity<ConsumerDtoResponse> updateConsumerById(Long,ConsumerDtoRequest)
++ ResponseEntity<ConsumerDtoResponse> deleteConsumerById(Long)
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.repository.DomicileRepository {
+}
+interface com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.repository.ConsumerRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.dto.ConsumerDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- ConsumerModel consumer
+- List<ConsumerModel> consumerList
+~ int status
+~ String reasonPhrase
+~ String message
+~ ConsumerModel consumer
+~ List<ConsumerModel> consumerList
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder consumer(ConsumerModel)
++ Builder consumerList(List<ConsumerModel>)
++ ConsumerDtoResponse build()
++ String message()
++ List<ConsumerModel> consumerList()
++ ConsumerModel consumer()
++ String reasonPhrase()
++ int status()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.dto.ConsumerDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ ConsumerModel consumer
+~ List<ConsumerModel> consumerList
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder consumer(ConsumerModel)
++ Builder consumerList(List<ConsumerModel>)
++ ConsumerDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.mapper.ConsumerMapper {
++ Consumer dtoCreateToEntity(ConsumerDtoRequest)
++ Consumer dtoUpdateByIdToEntity(Long,ConsumerDtoRequest,Consumer,Domicile)
+}
+
+class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.entity.Domicile {
+- Long id
+- String city
+- String street
+- String building
+- String apartment
+}
+
+class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.model.ConsumerModel {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Domicile domicile
++ {static} ConsumerModel getModel(Consumer)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.service.ConsumerServiceImpl {
+- ConsumerMapper consumerMapper
+- ConsumerRepository consumerRepository
+- DomicileRepository domicileRepository
++ ConsumerDtoResponse createConsumer(ConsumerDtoRequest)
++ ConsumerDtoResponse getAllConsumers()
++ ConsumerDtoResponse getConsumerById(Long)
++ ConsumerDtoResponse updateConsumerById(Long,ConsumerDtoRequest)
++ ConsumerDtoResponse deleteConsumerById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.mapper.DomicileMapper {
++ Domicile dtoCreateToEntity(ConsumerDtoRequest)
++ Domicile dtoUpdateToEntity(ConsumerDtoRequest,Domicile)
+}
+
+class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.dto.ConsumerDtoRequest {
+- Long id
+- String firstName
+- String lastName
+- String email
+- String city
+- String street
+- String building
+- String apartment
++ String lastName()
++ String firstName()
++ String apartment()
++ String street()
++ String building()
++ String city()
++ String email()
++ Long id()
+}
+
+
+
+
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.repository.DomicileRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.repository.ConsumerRepository
+com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.dto.ConsumerDtoResponse +.. com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.dto.ConsumerDtoResponse$Builder
+com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.service.ConsumerService <|.. com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.service.ConsumerServiceImpl
+@enduml
