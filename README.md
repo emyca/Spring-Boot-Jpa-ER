@@ -70,6 +70,7 @@ directions, allowing navigation from both sides of the relationship.
 * [One-to-One bidirectional mapping. Shared primary key with @PrimaryKeyJoinColumn.](docs/_04_1_to_1_bidir_spk_pkjc/README.md)
 * [One-to-One mapping via Join Table.](docs/_05_1_to_1_jt/README.md)
 * [One-to-One unidirectional mapping. Shared primary key with @MapsId.](docs/_06_1_to_1_unidir_spk_mapsid/README.md)
+* [One-to-One bidirectional mapping. Shared primary key with @MapsId.](docs/_07_1_to_1_bidir_spk_mapsid/README.md)
 
 
 ## Resources
