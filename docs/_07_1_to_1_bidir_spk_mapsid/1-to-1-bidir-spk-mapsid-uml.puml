@@ -1,0 +1,165 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.dto.VendeeDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- VendeeModel vendee
+- List<VendeeModel> vendeeList
+~ int status
+~ String reasonPhrase
+~ String message
+~ VendeeModel vendee
+~ List<VendeeModel> vendeeList
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder vendee(VendeeModel)
++ Builder vendeeList(List<VendeeModel>)
++ VendeeDtoResponse build()
++ int status()
++ String message()
++ List<VendeeModel> vendeeList()
++ String reasonPhrase()
++ VendeeModel vendee()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.dto.VendeeDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ VendeeModel vendee
+~ List<VendeeModel> vendeeList
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder vendee(VendeeModel)
++ Builder vendeeList(List<VendeeModel>)
++ VendeeDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.dto.VendeeDtoRequest {
+- Long id
+- String firstName
+- String lastName
+- String email
+- String city
+- String street
+- String building
+- String apartment
++ String lastName()
++ String firstName()
++ String apartment()
++ String street()
++ String building()
++ String city()
++ String email()
++ Long id()
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.service.VendeeService {
+~ VendeeDtoResponse createVendee(VendeeDtoRequest)
+~ VendeeDtoResponse getAllVendees()
+~ VendeeDtoResponse getAllVendeesByAbode()
+~ VendeeDtoResponse getVendeeById(Long)
+~ VendeeDtoResponse updateVendeeById(Long,VendeeDtoRequest)
+~ VendeeDtoResponse deleteVendeeById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.model.VendeeModel {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Abode abode
++ {static} VendeeModel getModel(Vendee)
++ {static} VendeeModel getModel(Abode)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.mapper.VendeeMapper {
++ Vendee dtoCreateToEntity(VendeeDtoRequest)
++ Vendee dtoUpdateByIdToEntity(Long,VendeeDtoRequest,Vendee,Abode)
+}
+
+class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.entity.Vendee {
+- Long id
+- String firstName
+- String lastName
+- String email
+- Abode abode
+}
+
+class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.controller.VendeeController {
+- VendeeService service
++ ResponseEntity<VendeeDtoResponse> createVendee(VendeeDtoRequest)
++ ResponseEntity<VendeeDtoResponse> getAllVendees()
++ ResponseEntity<VendeeDtoResponse> getAllVendeesByAbode()
++ ResponseEntity<VendeeDtoResponse> getVendeeById(Long)
++ ResponseEntity<VendeeDtoResponse> updateVendeeById(Long,VendeeDtoRequest)
++ ResponseEntity<VendeeDtoResponse> deleteVendeeById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.entity.Abode {
+- Long id
+- String city
+- String street
+- String building
+- String apartment
+- Vendee vendee
+}
+
+class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.mapper.AbodeMapper {
++ Abode dtoCreateToEntity(VendeeDtoRequest)
++ Abode dtoUpdateToEntity(VendeeDtoRequest,Abode)
+}
+
+interface com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.repository.VendeeRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.service.VendeeServiceImpl {
+- VendeeMapper vendeeMapper
+- AbodeMapper abodeMapper
+- VendeeRepository vendeeRepository
+- AbodeRepository abodeRepository
++ VendeeDtoResponse createVendee(VendeeDtoRequest)
++ VendeeDtoResponse getAllVendees()
++ VendeeDtoResponse getAllVendeesByAbode()
++ VendeeDtoResponse getVendeeById(Long)
++ VendeeDtoResponse updateVendeeById(Long,VendeeDtoRequest)
++ VendeeDtoResponse deleteVendeeById(Long)
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.repository.AbodeRepository {
+}
+
+
+com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.dto.VendeeDtoResponse +.. com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.dto.VendeeDtoResponse$Builder
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.repository.VendeeRepository
+com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.service.VendeeService <|.. com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.service.VendeeServiceImpl
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.repository.AbodeRepository
+@enduml
