@@ -180,7 +180,7 @@ Demo request body:
 }
 ```
 
-11. Get all Posts.
+11. Get all Posts (exist).
 Gets data, that exist.
 ```text
 GET http://localhost:8080/api/v1/posts
