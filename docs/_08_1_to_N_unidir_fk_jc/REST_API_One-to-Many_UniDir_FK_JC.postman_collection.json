@@ -1,0 +1,792 @@
+{
+	"info": {
+		"_postman_id": "8f874dec-7823-4a28-a88e-a59605d80dde",
+		"name": "REST API One-to-Many UniDir FK JC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3280496"
+	},
+	"item": [
+		{
+			"name": "Get all Posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Comments by Post id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/1/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"1",
+						"comments"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"1"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comment by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"comments",
+						"1"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Fruits\",\r\n  \"content\": \"Fruits are very tasty and useful.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"1"
+					]
+				},
+				"description": "```\nTrying to update data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Comment by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"It can be discussed.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"comments",
+						"1"
+					]
+				},
+				"description": "```\nTrying to update data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Post by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"1"
+					]
+				},
+				"description": "```\nTrying to delete data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Comment by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"comments",
+						"1"
+					]
+				},
+				"description": "```\nTrying to delete data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Post 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Fruits\",\r\n  \"content\": \"Fruits are very useful for eating.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					]
+				},
+				"description": "Adds Post 1"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Post 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"About animals\",\r\n  \"content\": \"Animals are very funny creatures.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					]
+				},
+				"description": "Adds Post 2"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Post 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Football game\",\r\n  \"content\": \"Football as a game is very common in many countries.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					]
+				},
+				"description": "Adds Post 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Comment 1 by Post id 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Good thinking.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/1/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"1",
+						"comments"
+					]
+				},
+				"description": "```\nAdds Comment by existing Post id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Posts (exist)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					]
+				},
+				"description": "```\nGets data, that exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Comment 2 by Post id 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Good thinking.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/1/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"1",
+						"comments"
+					]
+				},
+				"description": "```\nAdds Comment by existing Post id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Comment 1 by Post id 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Interesting thoughts.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/3/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"3",
+						"comments"
+					]
+				},
+				"description": "```\nAdds Comment by existing Post id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Comment 1 by Post id 27",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Good thinking.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/27/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"27",
+						"comments"
+					]
+				},
+				"description": "```\nTrying to add Comment by not existing Post id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get existing Comments by Post id 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/1/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"1",
+						"comments"
+					]
+				},
+				"description": "```\nGets all existing Comments by existing Post id 1.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get not existing Comments by Post id 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/2/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"2",
+						"comments"
+					]
+				},
+				"description": "```\nTrying to get all Comments by existing Post id. The Comments are not existing at all.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post by id 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"1"
+					]
+				},
+				"description": "```\nGets data by existing Post id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comment by id 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"comments",
+						"1"
+					]
+				},
+				"description": "```\nGets data by existing Comment id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post by id 2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"About animals\",\r\n  \"content\": \"Animals are very funny and clever creatures.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"2"
+					]
+				},
+				"description": "```\nUpdates Post by existing id 2.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post by id 1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Fruits\",\r\n  \"content\": \"Fruits are very tasty and useful.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"1"
+					]
+				},
+				"description": "```\nUpdates Post by existing id 1.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Comment by id 3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"It can be discussed.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/comments/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"comments",
+						"3"
+					]
+				},
+				"description": "```\nUpdates Comment by existing id 3.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Post 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Books\",\r\n  \"content\": \"Books are a source of knowledge.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					]
+				},
+				"description": "```\nAdds Post 4.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Comment 1 by Post id 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Amazing and unbelievable!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/4/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"4",
+						"comments"
+					]
+				},
+				"description": "```\nAdds Comment 1 by existing Post id 4.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Comment 2 by Post id 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Good thinking.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/4/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"4",
+						"comments"
+					]
+				},
+				"description": "```\nAdds Comment 2 by existing Post id 4.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Post by id 3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"3"
+					]
+				},
+				"description": "```\nDeletes Post by existing id 3.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Comment by id 2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/comments/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"comments",
+						"2"
+					]
+				},
+				"description": "```\nDeletes Comment by existing id 2.\n\n ```"
+			},
+			"response": []
+		}
+	]
+}
