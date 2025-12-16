@@ -1,0 +1,252 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.CommentDtoRequest {
+- Long id
+- String consideration
++ Long id()
++ String consideration()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.entity.Comment {
+- Long id
+- String consideration
+}
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.model.CommentModel {
+- Long id
+- String consideration
++ {static} CommentModel getModel(Comment)
++ {static} List<CommentModel> getModel(List<Comment>)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.model.PostModel {
+- Long id
+- String title
+- String content
+- List<Comment> comments
++ {static} PostModel getModel(Post)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.PostDtoRequest {
+- Long id
+- String title
+- String content
++ String title()
++ String content()
++ Long id()
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.repository.CommentRepository {
+}
+interface com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.service.PostService {
+~ PostDtoResponse createPost(PostDtoRequest)
+~ PostDtoResponse getAllPosts()
+~ PostDtoResponse getPostById(Long)
+~ PostDtoResponse updatePostById(Long,PostDtoRequest)
+~ PostDtoResponse deletePostById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.mapper.PostMapper {
++ Post dtoCreateToEntity(PostDtoRequest)
++ Post dtoUpdateByIdToEntity(Long,PostDtoRequest,Post)
+}
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.controller.PostController {
+- PostService service
++ ResponseEntity<PostDtoResponse> createPost(PostDtoRequest)
++ ResponseEntity<PostDtoResponse> getAllPosts()
++ ResponseEntity<PostDtoResponse> getPostById(Long)
++ ResponseEntity<PostDtoResponse> updatePostById(Long,PostDtoRequest)
++ ResponseEntity<PostDtoResponse> deletePostById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.service.PostServiceImpl {
+- PostMapper postMapper
+- PostRepository postRepository
++ PostDtoResponse createPost(PostDtoRequest)
++ PostDtoResponse getAllPosts()
++ PostDtoResponse getPostById(Long)
++ PostDtoResponse updatePostById(Long,PostDtoRequest)
++ PostDtoResponse deletePostById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.PostDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- PostModel post
+- List<PostModel> posts
+~ int status
+~ String reasonPhrase
+~ String message
+~ PostModel post
+~ List<PostModel> posts
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder post(PostModel)
++ Builder posts(List<PostModel>)
++ PostDtoResponse build()
++ String message()
++ String reasonPhrase()
++ List<PostModel> posts()
++ PostModel post()
++ int status()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.PostDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ PostModel post
+~ List<PostModel> posts
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder post(PostModel)
++ Builder posts(List<PostModel>)
++ PostDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.service.CommentServiceImpl {
+- PostRepository postRepository
+- CommentRepository commentRepository
++ CommentDtoResponse createCommentByPostId(Long,CommentDtoRequest)
++ CommentDtoResponse getAllCommentsByPostId(Long)
++ CommentDtoResponse getCommentById(Long)
++ CommentDtoResponse updateCommentById(Long,CommentDtoRequest)
++ CommentDtoResponse deleteCommentById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.entity.Post {
+- Long id
+- String title
+- String content
+- List<Comment> comments
+}
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.controller.CommentController {
+- CommentService service
++ ResponseEntity<CommentDtoResponse> createCommentByPostId(Long,CommentDtoRequest)
++ ResponseEntity<CommentDtoResponse> getAllCommentsByPostId(Long)
++ ResponseEntity<CommentDtoResponse> getCommentById(Long)
++ ResponseEntity<CommentDtoResponse> updateCommentById(Long,CommentDtoRequest)
++ ResponseEntity<CommentDtoResponse> deleteCommentById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.CommentDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- Long postId
+- CommentModel comment
+- List<CommentModel> comments
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long postId
+~ CommentModel comment
+~ List<CommentModel> comments
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder postId(Long)
++ Builder comment(CommentModel)
++ Builder comments(List<CommentModel>)
++ CommentDtoResponse build()
++ CommentModel comment()
++ String message()
++ Long postId()
++ String reasonPhrase()
++ int status()
++ List<CommentModel> comments()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.CommentDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long postId
+~ CommentModel comment
+~ List<CommentModel> comments
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder postId(Long)
++ Builder comment(CommentModel)
++ Builder comments(List<CommentModel>)
++ CommentDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+interface com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.repository.PostRepository {
+}
+interface com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.service.CommentService {
+~ CommentDtoResponse createCommentByPostId(Long,CommentDtoRequest)
+~ CommentDtoResponse getAllCommentsByPostId(Long)
+~ CommentDtoResponse getCommentById(Long)
+~ CommentDtoResponse updateCommentById(Long,CommentDtoRequest)
+~ CommentDtoResponse deleteCommentById(Long)
+}
+
+
+
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.repository.CommentRepository
+com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.service.PostService <|.. com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.service.PostServiceImpl
+com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.PostDtoResponse +.. com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.PostDtoResponse$Builder
+com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.service.CommentService <|.. com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.service.CommentServiceImpl
+com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.CommentDtoResponse +.. com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.dto.CommentDtoResponse$Builder
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.repository.PostRepository
+@enduml
