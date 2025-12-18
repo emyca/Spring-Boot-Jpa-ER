@@ -6,7 +6,6 @@ import com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.entity.Post;
 import com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.mapper.PostMapper;
 import com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.model.PostModel;
 import com.example.Spring_Boot_Jpa_ER._08_1_to_N_unidir_fk_jc.repository.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +17,15 @@ import java.util.Optional;
 @Service("PostServiceImpl")
 public class PostServiceImpl implements PostService {
 
-    @Autowired
-    private PostMapper postMapper;
-    @Autowired
-    private PostRepository postRepository;
+    private final PostMapper postMapper;
+    private final PostRepository postRepository;
+
+    public PostServiceImpl(
+            PostMapper postMapper,
+            PostRepository postRepository) {
+        this.postMapper = postMapper;
+        this.postRepository = postRepository;
+    }
 
     @Override
     public PostDtoResponse createPost(PostDtoRequest request) {
