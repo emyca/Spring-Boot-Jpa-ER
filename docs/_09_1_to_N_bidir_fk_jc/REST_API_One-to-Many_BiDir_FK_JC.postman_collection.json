@@ -1,0 +1,801 @@
+{
+	"info": {
+		"_postman_id": "f6bd91a5-e08d-4b03-bc45-43cff24e5a2e",
+		"name": "REST API One-to-Many BiDir FK JC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3280496"
+	},
+	"item": [
+		{
+			"name": "Get all Articles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Remarks by Article id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/1/remarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"1",
+						"remarks"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Article by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"1"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Remark by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/remarks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"remarks",
+						"1"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Article by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Fruits\",\r\n  \"content\": \"Fruits are very tasty and useful.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"1"
+					]
+				},
+				"description": "```\nTrying to update data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Remark by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"It can be discussed.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/remarks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"remarks",
+						"1"
+					]
+				},
+				"description": "```\nTrying to update data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Article by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"1"
+					]
+				},
+				"description": "```\nTrying to delete data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Remark by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/remarks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"remarks",
+						"1"
+					]
+				},
+				"description": "```\nTrying to delete data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Article 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Fruits\",\r\n  \"content\": \"Fruits are very useful for eating.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					]
+				},
+				"description": "Adds Article 1"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Article 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"About animals\",\r\n  \"content\": \"Animals are very funny creatures.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					]
+				},
+				"description": "Adds Article 2"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Article 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Football game\",\r\n  \"content\": \"Football as a game is very common in many countries.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					]
+				},
+				"description": "Adds Article 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Remark 1 by Article id 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Good thinking.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/1/remarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"1",
+						"remarks"
+					]
+				},
+				"description": "```\nAdds Remark by existing Article id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Articles (exist)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					]
+				},
+				"description": "```\nGets data, that exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Remark 2 by Article id 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Interesting thoughts.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/1/remarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"1",
+						"remarks"
+					]
+				},
+				"description": "```\nAdds Remark by existing Article id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Remark 1 by Article id 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Interesting thoughts.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/3/remarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"3",
+						"remarks"
+					]
+				},
+				"description": "```\nAdds Remark by existing Article id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Remark 1 by Article id 27",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Good thinking.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/27/remarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"27",
+						"remarks"
+					]
+				},
+				"description": "```\nTrying to add Remark by not existing Article id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get existing Remarks by Article id 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/1/remarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"1",
+						"remarks"
+					]
+				},
+				"description": "```\nGets all existing Remarks by existing Article id 1.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get not existing Remarks by Article id 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/2/remarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"2",
+						"remarks"
+					]
+				},
+				"description": "```\nTrying to get all Remarks by existing Article id. The Remarks are not existing at all.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Article by id 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"1"
+					]
+				},
+				"description": "```\nGets data by existing Article id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Remark by id 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/remarks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"remarks",
+						"1"
+					]
+				},
+				"description": "```\nGets data by existing Remark id.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Article by id 2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"About animals\",\r\n  \"content\": \"Animals are very funny and clever creatures.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"2"
+					]
+				},
+				"description": "```\nUpdates Articles by existing id 2.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Article by id 1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Fruits\",\r\n  \"content\": \"Fruits are very tasty and useful.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"1"
+					]
+				},
+				"description": "```\nUpdates Article by existing id 1.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Remark by id 3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"It can be discussed.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/remarks/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"remarks",
+						"3"
+					]
+				},
+				"description": "```\nUpdates Remark by existing id 3.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Article 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Books\",\r\n  \"content\": \"Books are a source of knowledge.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					]
+				},
+				"description": "```\nAdds Article 4.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Remark 1 by Article id 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Amazing and unbelievable!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/4/remarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"4",
+						"remarks"
+					]
+				},
+				"description": "```\nAdds Remark 1 by existing Article id 4.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Remark 2 by Article id 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"consideration\": \"Good thinking.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/4/remarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"4",
+						"remarks"
+					]
+				},
+				"description": "```\nAdds Remark 2 by existing Article id 4.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Article by id 3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"3"
+					]
+				},
+				"description": "```\nDeletes Article by existing id 3.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Remark by id 2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/remarks/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"remarks",
+						"2"
+					]
+				},
+				"description": "```\nDeletes Remark by existing id 2.\n\n ```"
+			},
+			"response": []
+		}
+	]
+}
