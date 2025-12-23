@@ -1,0 +1,254 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.service.ArticleServiceImpl {
+- ArticleMapper articleMapper
+- ArticleRepository articleRepository
++ ArticleDtoResponse createArticle(ArticleDtoRequest)
++ ArticleDtoResponse getAllArticles()
++ ArticleDtoResponse getArticleById(Long)
++ ArticleDtoResponse updateArticleById(Long,ArticleDtoRequest)
++ ArticleDtoResponse deleteArticleById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.RemarkDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- Long articleId
+- RemarkModel remark
+- List<RemarkModel> remarks
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long articleId
+~ RemarkModel remark
+~ List<RemarkModel> remarks
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder articleId(Long)
++ Builder remark(RemarkModel)
++ Builder remarks(List<RemarkModel>)
++ RemarkDtoResponse build()
++ int status()
++ String message()
++ List<RemarkModel> remarks()
++ String reasonPhrase()
++ RemarkModel remark()
++ Long articleId()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.RemarkDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long articleId
+~ RemarkModel remark
+~ List<RemarkModel> remarks
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder articleId(Long)
++ Builder remark(RemarkModel)
++ Builder remarks(List<RemarkModel>)
++ RemarkDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.controller.RemarkController {
+- RemarkService service
++ ResponseEntity<RemarkDtoResponse> createRemarkByArticleId(Long,RemarkDtoRequest)
++ ResponseEntity<RemarkDtoResponse> getAllRemarksByArticleId(Long)
++ ResponseEntity<RemarkDtoResponse> getRemarkById(Long)
++ ResponseEntity<RemarkDtoResponse> updateRemarkById(Long,RemarkDtoRequest)
++ ResponseEntity<RemarkDtoResponse> deleteRemarkById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.entity.Article {
+- Long id
+- String title
+- String content
+- List<Remark> remarks
+}
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.mapper.ArticleMapper {
++ Article dtoCreateToEntity(ArticleDtoRequest)
++ Article dtoUpdateByIdToEntity(Long,ArticleDtoRequest,Article)
+}
+
+interface com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.service.RemarkService {
+~ RemarkDtoResponse createRemarkByArticleId(Long,RemarkDtoRequest)
+~ RemarkDtoResponse getAllRemarksByArticleId(Long)
+~ RemarkDtoResponse getRemarkById(Long)
+~ RemarkDtoResponse updateRemarkById(Long,RemarkDtoRequest)
+~ RemarkDtoResponse deleteRemarkById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.controller.ArticleController {
+- ArticleService service
++ ResponseEntity<ArticleDtoResponse> createArticle(ArticleDtoRequest)
++ ResponseEntity<ArticleDtoResponse> getAllArticles()
++ ResponseEntity<ArticleDtoResponse> getArticleById(Long)
++ ResponseEntity<ArticleDtoResponse> updateArticleById(Long,ArticleDtoRequest)
++ ResponseEntity<ArticleDtoResponse> deleteArticleById(Long)
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.service.ArticleService {
+~ ArticleDtoResponse createArticle(ArticleDtoRequest)
+~ ArticleDtoResponse getAllArticles()
+~ ArticleDtoResponse getArticleById(Long)
+~ ArticleDtoResponse updateArticleById(Long,ArticleDtoRequest)
+~ ArticleDtoResponse deleteArticleById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.ArticleDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- ArticleModel article
+- List<ArticleModel> articles
+~ int status
+~ String reasonPhrase
+~ String message
+~ ArticleModel article
+~ List<ArticleModel> articles
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder article(ArticleModel)
++ Builder articles(List<ArticleModel>)
++ ArticleDtoResponse build()
++ int status()
++ String message()
++ List<ArticleModel> articles()
++ String reasonPhrase()
++ ArticleModel article()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.ArticleDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ ArticleModel article
+~ List<ArticleModel> articles
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder article(ArticleModel)
++ Builder articles(List<ArticleModel>)
++ ArticleDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.model.ArticleModel {
+- Long id
+- String title
+- String content
+- List<Remark> remarks
++ {static} ArticleModel getModel(Article)
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.repository.RemarkRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.entity.Remark {
+- Long id
+- String consideration
+- Article article
+}
+
+interface com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.repository.ArticleRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.model.RemarkModel {
+- Long id
+- String consideration
++ {static} RemarkModel getModel(Remark)
++ {static} Long getArticleId(Remark)
++ {static} List<RemarkModel> getModel(List<Remark>)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.ArticleDtoRequest {
+- Long id
+- String title
+- String content
++ String title()
++ String content()
++ Long id()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.RemarkDtoRequest {
+- Long id
+- String consideration
++ Long id()
++ String consideration()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.service.RemarkServiceImpl {
+- ArticleRepository articleRepository
+- RemarkRepository remarkRepository
++ RemarkDtoResponse createRemarkByArticleId(Long,RemarkDtoRequest)
++ RemarkDtoResponse getAllRemarksByArticleId(Long)
++ RemarkDtoResponse getRemarkById(Long)
++ RemarkDtoResponse updateRemarkById(Long,RemarkDtoRequest)
++ RemarkDtoResponse deleteRemarkById(Long)
+}
+
+
+
+
+com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.service.ArticleService <|.. com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.service.ArticleServiceImpl
+com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.RemarkDtoResponse +.. com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.RemarkDtoResponse$Builder
+com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.ArticleDtoResponse +.. com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.dto.ArticleDtoResponse$Builder
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.repository.RemarkRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.repository.ArticleRepository
+com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.service.RemarkService <|.. com.example.Spring_Boot_Jpa_ER._09_1_to_N_bidir_fk_jc.service.RemarkServiceImpl
+@enduml
