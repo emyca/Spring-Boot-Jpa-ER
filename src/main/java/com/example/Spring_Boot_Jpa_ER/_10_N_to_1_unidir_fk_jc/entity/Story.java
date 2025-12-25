@@ -1,0 +1,23 @@
+package com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@Entity(name = "stories")
+public class Story {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "title")
+    private String title;
+    @Column(name = "content")
+    private String content;
+}
