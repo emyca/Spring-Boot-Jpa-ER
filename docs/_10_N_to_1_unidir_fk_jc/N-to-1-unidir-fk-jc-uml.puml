@@ -1,0 +1,254 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.model.OpinionModel {
+- Long id
+- String consideration
++ {static} OpinionModel getModel(Opinion)
++ {static} List<OpinionModel> getModel(List<Opinion>)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.StoryDtoRequest {
+- Long id
+- String title
+- String content
++ String title()
++ String content()
++ Long id()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.OpinionDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- Long storyId
+- OpinionModel opinion
+- List<OpinionModel> opinions
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long storyId
+~ OpinionModel opinion
+~ List<OpinionModel> opinions
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder storyId(Long)
++ Builder opinion(OpinionModel)
++ Builder opinions(List<OpinionModel>)
++ OpinionDtoResponse build()
++ OpinionModel opinion()
++ String message()
++ List<OpinionModel> opinions()
++ String reasonPhrase()
++ int status()
++ Long storyId()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.OpinionDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long storyId
+~ OpinionModel opinion
+~ List<OpinionModel> opinions
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder storyId(Long)
++ Builder opinion(OpinionModel)
++ Builder opinions(List<OpinionModel>)
++ OpinionDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.controller.StoryController {
+- StoryService service
++ ResponseEntity<StoryDtoResponse> createStory(StoryDtoRequest)
++ ResponseEntity<StoryDtoResponse> getAllStories()
++ ResponseEntity<StoryDtoResponse> getStoryById(Long)
++ ResponseEntity<StoryDtoResponse> updateStoryById(Long,StoryDtoRequest)
++ ResponseEntity<StoryDtoResponse> deleteStoryById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.OpinionDtoRequest {
+- Long id
+- String consideration
++ Long id()
++ String consideration()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.StoryDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- StoryModel story
+- List<StoryModel> stories
+~ int status
+~ String reasonPhrase
+~ String message
+~ StoryModel story
+~ List<StoryModel> stories
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder story(StoryModel)
++ Builder stories(List<StoryModel>)
++ StoryDtoResponse build()
++ StoryModel story()
++ List<StoryModel> stories()
++ String message()
++ String reasonPhrase()
++ int status()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.StoryDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ StoryModel story
+~ List<StoryModel> stories
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder story(StoryModel)
++ Builder stories(List<StoryModel>)
++ StoryDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.Message {
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.entity.Opinion {
+- Long id
+- String consideration
+- Story story
+}
+
+interface com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.repository.OpinionRepository {
+~ List<Opinion> findOpinionsByStoryId(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.entity.Story {
+- Long id
+- String title
+- String content
+}
+
+interface com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.service.StoryService {
+~ StoryDtoResponse createStory(StoryDtoRequest)
+~ StoryDtoResponse getAllStories()
+~ StoryDtoResponse getStoryById(Long)
+~ StoryDtoResponse updateStoryById(Long,StoryDtoRequest)
+~ StoryDtoResponse deleteStoryById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.service.StoryServiceImpl {
+- StoryMapper storyMapper
+- StoryRepository storyRepository
++ StoryDtoResponse createStory(StoryDtoRequest)
++ StoryDtoResponse getAllStories()
++ StoryDtoResponse getStoryById(Long)
++ StoryDtoResponse updateStoryById(Long,StoryDtoRequest)
++ StoryDtoResponse deleteStoryById(Long)
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.repository.StoryRepository {
+}
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.service.OpinionServiceImpl {
+- StoryRepository storyRepository
+- OpinionRepository opinionRepository
++ OpinionDtoResponse createOpinionByStoryId(Long,OpinionDtoRequest)
+- Opinion addOpinionByStoryId(Long,OpinionDtoRequest)
++ OpinionDtoResponse getAllOpinionsByStoryId(Long)
++ OpinionDtoResponse getOpinionById(Long)
++ OpinionDtoResponse updateOpinionById(Long,OpinionDtoRequest)
++ OpinionDtoResponse deleteOpinionById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.controller.OpinionController {
+- OpinionService service
++ ResponseEntity<OpinionDtoResponse> createOpinionByStoryId(Long,OpinionDtoRequest)
++ ResponseEntity<OpinionDtoResponse> getAllOpinionsByStoryId(Long)
++ ResponseEntity<OpinionDtoResponse> getOpinionById(Long)
++ ResponseEntity<OpinionDtoResponse> updateOpinionById(Long,OpinionDtoRequest)
++ ResponseEntity<OpinionDtoResponse> deleteOpinionById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.model.StoryModel {
+- Long id
+- String title
+- String content
++ {static} StoryModel getModel(Story)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.mapper.StoryMapper {
++ Story dtoCreateToEntity(StoryDtoRequest)
++ Story dtoUpdateByIdToEntity(StoryDtoRequest,Story)
+}
+
+interface com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.service.OpinionService {
+~ OpinionDtoResponse createOpinionByStoryId(Long,OpinionDtoRequest)
+~ OpinionDtoResponse getAllOpinionsByStoryId(Long)
+~ OpinionDtoResponse getOpinionById(Long)
+~ OpinionDtoResponse updateOpinionById(Long,OpinionDtoRequest)
+~ OpinionDtoResponse deleteOpinionById(Long)
+}
+
+
+
+com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.OpinionDtoResponse +.. com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.OpinionDtoResponse$Builder
+com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.StoryDtoResponse +.. com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.dto.StoryDtoResponse$Builder
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.repository.OpinionRepository
+com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.service.StoryService <|.. com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.service.StoryServiceImpl
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.repository.StoryRepository
+com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.service.OpinionService <|.. com.example.Spring_Boot_Jpa_ER._10_N_to_1_unidir_fk_jc.service.OpinionServiceImpl
+@enduml
