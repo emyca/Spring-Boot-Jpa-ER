@@ -1,0 +1,946 @@
+{
+	"info": {
+		"_postman_id": "ec27c6f1-dce3-49ea-99f1-115d61ea883f",
+		"name": "REST API Many-to-Many UniDir JT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3280496"
+	},
+	"item": [
+		{
+			"name": "Get all Employees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"1"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Project by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"1"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Employees by Project id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/1/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"1",
+						"employees"
+					]
+				},
+				"description": "```\nTrying to get data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Employee 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Alice\",\r\n  \"lastName\": \"Sunny\",\r\n  \"email\": \"alice@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				},
+				"description": "Adds Employee 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Employee 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"bob@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				},
+				"description": "Adds Employee 2."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Employee 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Lucy\",\r\n  \"lastName\": \"Moon\",\r\n  \"email\": \"moon@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				},
+				"description": "Adds Employee 3."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Employee 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Tom\",\r\n  \"lastName\": \"Clark\",\r\n  \"email\": \"tom@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				},
+				"description": "Adds Employee 4."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Project 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Alpha\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects"
+					]
+				},
+				"description": "Adds Project 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Project 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Beta\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects"
+					]
+				},
+				"description": "Adds Project 2."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Project 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Gamma\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects"
+					]
+				},
+				"description": "Adds Project 3."
+			},
+			"response": []
+		},
+		{
+			"name": "Set Project 1 to Employee 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/1/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"1",
+						"projects"
+					]
+				},
+				"description": "Sets Project 1 to Employee 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Set Project 2 to Employee 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/1/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"1",
+						"projects"
+					]
+				},
+				"description": "Sets Project 2 to Employee 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Set Project 2 to Employee 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/2/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"2",
+						"projects"
+					]
+				},
+				"description": "Sets Project 2 to Employee 2."
+			},
+			"response": []
+		},
+		{
+			"name": "Set Project 3 to Employee 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/2/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"2",
+						"projects"
+					]
+				},
+				"description": "Sets Project 3 to Employee 2."
+			},
+			"response": []
+		},
+		{
+			"name": "Set Project 2 to Employee 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/4/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"4",
+						"projects"
+					]
+				},
+				"description": "Sets Project 2 to Employee 4."
+			},
+			"response": []
+		},
+		{
+			"name": "Set Project to not-existing Employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/27/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"27",
+						"projects"
+					]
+				},
+				"description": "Trying to set Project 2 to not-existing Employee 27."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Employees (exist)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				},
+				"description": "Gets all existing Employees."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by id (exist)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"1"
+					]
+				},
+				"description": "Gets existing Employee 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Projects (exist)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects"
+					]
+				},
+				"description": "```\nGets all existing Projects.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Project by id (exist)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"1"
+					]
+				},
+				"description": "Gets existing Project 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Employees by Project id (exist)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/1/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"1",
+						"employees"
+					]
+				},
+				"description": "```\nGets all Employees set to Project 1.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee 1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Alice\",\r\n  \"lastName\": \"Terra\",\r\n  \"email\": \"terra@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"1"
+					]
+				},
+				"description": "Updates Employee by id 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee 2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Green\",\r\n  \"email\": \"b.green@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"2"
+					]
+				},
+				"description": "Updates Employee by id 2."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Project 1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Alpha +\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"1"
+					]
+				},
+				"description": "Updates Project by id 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Project 3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Gamma +\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"3"
+					]
+				},
+				"description": "Updates Project by id 3."
+			},
+			"response": []
+		},
+		{
+			"name": "Unset Project 1 from Employee 1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/1/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"1",
+						"projects",
+						"1"
+					]
+				},
+				"description": "Unsets Project by id 1 from Employee of id 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Unset Project 2 from Employee 4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/4/projects/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"4",
+						"projects",
+						"2"
+					]
+				},
+				"description": "Unsets Project by id 2 from Employee of id 4."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Project 2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"2"
+					]
+				},
+				"description": "Should delete Project by existing id 2.  \nYou can get a \"Referential integrity constraint violation\",  \nbecause the Project with this id has a reference to a certain Employee(s).  \nYou must first unset this Project from all Employees that are related  \nto this Project. Find all Employees that are relevant to this Project  \nAfter, you can check the deleting with getting all Projects."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Project 1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"1"
+					]
+				},
+				"description": "```\nShould delete Project by existing id 1. The Project does not have any references.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Project 15",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"15"
+					]
+				},
+				"description": "```\nTrying to delete data, that do not exist.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employee 1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"1"
+					]
+				},
+				"description": "```\nDeletes Employee by id 1.\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employee 4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employees/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"4"
+					]
+				},
+				"description": "```\nDeletes Employee by id 4.\n\n ```"
+			},
+			"response": []
+		}
+	]
+}
