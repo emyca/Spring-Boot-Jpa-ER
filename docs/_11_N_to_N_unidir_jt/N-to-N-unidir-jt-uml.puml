@@ -1,0 +1,288 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.service.ProjectServiceImpl {
+- ProjectMapper projectMapper
+- ProjectRepository projectRepository
+- EmployeeRepository employeeRepository
++ ProjectDtoResponse createProject(ProjectDtoRequest)
++ ProjectDtoResponse setProjectToByEmployeeId(Long,ProjectDtoRequest)
+- Project setProject(Long,ProjectDtoRequest)
++ ProjectDtoResponse getAllProjects()
++ ProjectDtoResponse getProjectById(Long)
++ ProjectDtoResponse updateProjectById(Long,ProjectDtoRequest)
+- Project updateProject(Long,ProjectDtoRequest)
++ ProjectDtoResponse unsetProjectByIdFromEmployeeId(Long,Long)
++ ProjectDtoResponse deleteProjectById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.ProjectDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- Long employeeId
+- ProjectModel project
+- List<ProjectModel> projects
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long employeeId
+~ ProjectModel project
+~ List<ProjectModel> projects
++  SUCCESS_SAVE_MSG
++  FAILURE_SAVE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder employeeId(Long)
++ Builder project(ProjectModel)
++ Builder projects(List<ProjectModel>)
++ ProjectDtoResponse build()
++ String message()
++ int status()
++ String reasonPhrase()
++ Long employeeId()
++ ProjectModel project()
++ List<ProjectModel> projects()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.ProjectDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long employeeId
+~ ProjectModel project
+~ List<ProjectModel> projects
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder employeeId(Long)
++ Builder project(ProjectModel)
++ Builder projects(List<ProjectModel>)
++ ProjectDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.Message {
++  SUCCESS_SAVE_MSG
++  FAILURE_SAVE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.entity.Project {
+- Long id
+- String name
+}
+
+interface com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.service.EmployeeService {
+~ EmployeeDtoResponse createEmployee(EmployeeDtoRequest)
+~ EmployeeDtoResponse getAllEmployees()
+~ EmployeeDtoResponse getEmployeeById(Long)
+~ EmployeeDtoResponse getAllEmployeesByProjectId(Long)
+~ EmployeeDtoResponse updateEmployeeById(Long,EmployeeDtoRequest)
+~ EmployeeDtoResponse deleteEmployeeById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.EmployeeDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- Long projectId
+- EmployeeModel employee
+- List<EmployeeModel> employees
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long projectId
+~ EmployeeModel employee
+~ List<EmployeeModel> employees
++  SUCCESS_SAVE_MSG
++  FAILURE_SAVE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder projectId(Long)
++ Builder employee(EmployeeModel)
++ Builder employees(List<EmployeeModel>)
++ EmployeeDtoResponse build()
++ Long projectId()
++ String message()
++ int status()
++ String reasonPhrase()
++ EmployeeModel employee()
++ List<EmployeeModel> employees()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.EmployeeDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long projectId
+~ EmployeeModel employee
+~ List<EmployeeModel> employees
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder projectId(Long)
++ Builder employee(EmployeeModel)
++ Builder employees(List<EmployeeModel>)
++ EmployeeDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.Message {
++  SUCCESS_SAVE_MSG
++  FAILURE_SAVE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.controller.EmployeeController {
+- EmployeeService service
++ ResponseEntity<EmployeeDtoResponse> createEmployee(EmployeeDtoRequest)
++ ResponseEntity<EmployeeDtoResponse> getAllEmployees()
++ ResponseEntity<EmployeeDtoResponse> getEmployeeById(Long)
++ ResponseEntity<EmployeeDtoResponse> getAllEmployeesByProjectId(Long)
++ ResponseEntity<EmployeeDtoResponse> updateEmployeeById(Long,EmployeeDtoRequest)
++ ResponseEntity<EmployeeDtoResponse> deleteEmployeeById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.ProjectDtoRequest {
+- Long id
+- String name
++ String name()
++ Long id()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.mapper.EmployeeMapper {
++ Employee dtoCreateToEntity(EmployeeDtoRequest)
++ Employee dtoUpdateByIdToEntity(EmployeeDtoRequest,Employee)
+}
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.controller.ProjectController {
+- ProjectService service
++ ResponseEntity<ProjectDtoResponse> createProject(ProjectDtoRequest)
++ ResponseEntity<ProjectDtoResponse> setProjectToByEmployeeId(Long,ProjectDtoRequest)
++ ResponseEntity<ProjectDtoResponse> getAllProjects()
++ ResponseEntity<ProjectDtoResponse> getProjectById(Long)
++ ResponseEntity<ProjectDtoResponse> updateProjectById(Long,ProjectDtoRequest)
++ ResponseEntity<ProjectDtoResponse> unsetProjectByIdFromEmployeeId(Long,Long)
++ ResponseEntity<ProjectDtoResponse> deleteProjectById(Long)
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.repository.EmployeeRepository {
+~ List<Employee> findEmployeesByProjectsId(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.model.ProjectModel {
+- Long id
+- String name
++ {static} ProjectModel getModel(Project)
++ {static} List<ProjectModel> getModel(List<Project>)
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.repository.ProjectRepository {
+~ Project findProjectByName(String)
+}
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.EmployeeDtoRequest {
+- Long id
+- String firstName
+- String lastName
+- String email
++ String lastName()
++ String firstName()
++ String email()
++ Long id()
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.service.ProjectService {
+~ ProjectDtoResponse createProject(ProjectDtoRequest)
+~ ProjectDtoResponse setProjectToByEmployeeId(Long,ProjectDtoRequest)
+~ ProjectDtoResponse getAllProjects()
+~ ProjectDtoResponse getProjectById(Long)
+~ ProjectDtoResponse updateProjectById(Long,ProjectDtoRequest)
+~ ProjectDtoResponse unsetProjectByIdFromEmployeeId(Long,Long)
+~ ProjectDtoResponse deleteProjectById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.mapper.ProjectMapper {
++ Project dtoCreateToEntity(ProjectDtoRequest)
++ Project dtoUpdateByIdToEntity(ProjectDtoRequest,Project)
+}
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.entity.Employee {
+- Long id
+- String firstName
+- String lastName
+- String email
+~ List<Project> projects
++ void addProject(Project)
++ void removeProject(long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.model.EmployeeModel {
+- Long id
+- String firstName
+- String lastName
+- String email
+- List<Project> projects
++ {static} EmployeeModel getModel(Employee)
++ {static} List<EmployeeModel> getModel(List<Employee>)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.service.EmployeeServiceImpl {
+- EmployeeMapper employeeMapper
+- EmployeeRepository employeeRepository
+- ProjectRepository projectRepository
++ EmployeeDtoResponse createEmployee(EmployeeDtoRequest)
++ EmployeeDtoResponse getAllEmployees()
++ EmployeeDtoResponse getEmployeeById(Long)
++ EmployeeDtoResponse getAllEmployeesByProjectId(Long)
++ EmployeeDtoResponse updateEmployeeById(Long,EmployeeDtoRequest)
++ EmployeeDtoResponse deleteEmployeeById(Long)
+}
+
+
+
+
+com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.service.ProjectService <|.. com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.service.ProjectServiceImpl
+com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.ProjectDtoResponse +.. com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.ProjectDtoResponse$Builder
+com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.EmployeeDtoResponse +.. com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.dto.EmployeeDtoResponse$Builder
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.repository.EmployeeRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.repository.ProjectRepository
+com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.service.EmployeeService <|.. com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.service.EmployeeServiceImpl
+@enduml
