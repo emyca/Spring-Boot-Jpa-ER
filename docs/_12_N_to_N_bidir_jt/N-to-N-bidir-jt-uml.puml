@@ -1,0 +1,294 @@
+@startuml
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.mapper.CourseMapper {
++ Course dtoCreateToEntity(CourseDtoRequest)
++ Course dtoUpdateByIdToEntity(CourseDtoRequest,Course)
+}
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.model.StudentModel {
+- Long id
+- String firstName
+- String lastName
+- String email
+- List<Course> courses
++ {static} StudentModel getModel(Student)
++ {static} List<StudentModel> getModel(List<Student>)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.entity.Student {
+- Long id
+- String firstName
+- String lastName
+- String email
+~ Set<Course> courses
++ void addCourse(Course)
++ void removeCourse(long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.controller.CourseController {
+- CourseService service
++ ResponseEntity<CourseDtoResponse> createCourse(CourseDtoRequest)
++ ResponseEntity<CourseDtoResponse> setCourseToByStudentId(Long,CourseDtoRequest)
++ ResponseEntity<CourseDtoResponse> getAllCourses()
++ ResponseEntity<CourseDtoResponse> getCourseById(Long)
++ ResponseEntity<CourseDtoResponse> getAllCoursesByStudentId(Long)
++ ResponseEntity<CourseDtoResponse> updateCourseById(Long,CourseDtoRequest)
++ ResponseEntity<CourseDtoResponse> unsetCourseByIdFromStudentId(Long,Long)
++ ResponseEntity<CourseDtoResponse> deleteCourseById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.StudentDtoRequest {
+- Long id
+- String firstName
+- String lastName
+- String email
++ String lastName()
++ String firstName()
++ String email()
++ Long id()
+}
+
+
+interface com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.repository.StudentRepository {
+~ List<Student> findStudentsByCoursesId(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.model.CourseModel {
+- Long id
+- String name
+- List<Student> students
++ {static} CourseModel getModel(Course)
++ {static} List<CourseModel> getModel(List<Course>)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.service.StudentServiceImpl {
+- StudentMapper studentMapper
+- StudentRepository studentRepository
+- CourseRepository courseRepository
++ StudentDtoResponse createStudent(StudentDtoRequest)
++ StudentDtoResponse getAllStudents()
++ StudentDtoResponse getStudentById(Long)
++ StudentDtoResponse getAllStudentsByCourseId(Long)
++ StudentDtoResponse updateStudentById(Long,StudentDtoRequest)
++ StudentDtoResponse deleteStudentById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.controller.StudentController {
+- StudentService service
++ ResponseEntity<StudentDtoResponse> createStudent(StudentDtoRequest)
++ ResponseEntity<StudentDtoResponse> getAllStudents()
++ ResponseEntity<StudentDtoResponse> getStudentById(Long)
++ ResponseEntity<StudentDtoResponse> getAllStudentsByCourseId(Long)
++ ResponseEntity<StudentDtoResponse> updateStudentById(Long,StudentDtoRequest)
++ ResponseEntity<StudentDtoResponse> deleteStudentById(Long)
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.entity.Course {
+- Long id
+- String name
+- Set<Student> students
+}
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.CourseDtoRequest {
+- Long id
+- String name
++ String name()
++ Long id()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.CourseDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- Long studentId
+- CourseModel course
+- List<CourseModel> courses
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long studentId
+~ CourseModel course
+~ List<CourseModel> courses
++  SUCCESS_SAVE_MSG
++  FAILURE_SAVE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder studentId(Long)
++ Builder course(CourseModel)
++ Builder courses(List<CourseModel>)
++ CourseDtoResponse build()
++ CourseModel course()
++ List<CourseModel> courses()
++ String message()
++ Long studentId()
++ String reasonPhrase()
++ int status()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.CourseDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long studentId
+~ CourseModel course
+~ List<CourseModel> courses
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder studentId(Long)
++ Builder course(CourseModel)
++ Builder courses(List<CourseModel>)
++ CourseDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.Message {
++  SUCCESS_SAVE_MSG
++  FAILURE_SAVE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+interface com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.service.CourseService {
+~ CourseDtoResponse createCourse(CourseDtoRequest)
+~ CourseDtoResponse setCourseToByStudentId(Long,CourseDtoRequest)
+~ CourseDtoResponse getAllCourses()
+~ CourseDtoResponse getCourseById(Long)
+~ CourseDtoResponse getAllCoursesByStudentId(Long)
+~ CourseDtoResponse updateCourseById(Long,CourseDtoRequest)
+~ CourseDtoResponse unsetCourseByIdFromStudentId(Long,Long)
+~ CourseDtoResponse deleteCourseById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.StudentDtoResponse {
+- int status
+- String reasonPhrase
+- String message
+- Long courseId
+- StudentModel student
+- List<StudentModel> students
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long courseId
+~ StudentModel student
+~ List<StudentModel> students
++  SUCCESS_SAVE_MSG
++  FAILURE_SAVE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder courseId(Long)
++ Builder student(StudentModel)
++ Builder students(List<StudentModel>)
++ StudentDtoResponse build()
++ StudentModel student()
++ String message()
++ String reasonPhrase()
++ List<StudentModel> students()
++ Long courseId()
++ int status()
+}
+
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.StudentDtoResponse$Builder {
+~ int status
+~ String reasonPhrase
+~ String message
+~ Long courseId
+~ StudentModel student
+~ List<StudentModel> students
++ Builder status(int)
++ Builder reasonPhrase(String)
++ Builder message(String)
++ Builder courseId(Long)
++ Builder student(StudentModel)
++ Builder students(List<StudentModel>)
++ StudentDtoResponse build()
+}
+
+
+enum com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.Message {
++  SUCCESS_SAVE_MSG
++  FAILURE_SAVE_MSG
++  SUCCESS_GET_LIST_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_GET_BY_ID_MSG
++  FAILURE_GET_BY_ID_MSG
++  SUCCESS_UPDATE_BY_ID_MSG
++  SUCCESS_DELETE_BY_ID_MSG
+- String message
+}
+
+interface com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.repository.CourseRepository {
+~ List<Course> findCoursesByStudentsId(Long)
+~ Course findCourseByName(String)
+}
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.mapper.StudentMapper {
++ Student dtoCreateToEntity(StudentDtoRequest)
++ Student dtoUpdateByIdToEntity(StudentDtoRequest,Student)
+}
+
+interface com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.service.StudentService {
+~ StudentDtoResponse createStudent(StudentDtoRequest)
+~ StudentDtoResponse getAllStudents()
+~ StudentDtoResponse getStudentById(Long)
+~ StudentDtoResponse getAllStudentsByCourseId(Long)
+~ StudentDtoResponse updateStudentById(Long,StudentDtoRequest)
+~ StudentDtoResponse deleteStudentById(Long)
+}
+
+class com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.service.CourseServiceImpl {
+- CourseMapper courseMapper
+- CourseRepository courseRepository
+- StudentRepository studentRepository
++ CourseDtoResponse createCourse(CourseDtoRequest)
++ CourseDtoResponse setCourseToByStudentId(Long,CourseDtoRequest)
+- Course setCourse(Long,CourseDtoRequest)
++ CourseDtoResponse getAllCourses()
++ CourseDtoResponse getCourseById(Long)
++ CourseDtoResponse getAllCoursesByStudentId(Long)
++ CourseDtoResponse updateCourseById(Long,CourseDtoRequest)
+- Course updateCourse(Long,CourseDtoRequest)
++ CourseDtoResponse unsetCourseByIdFromStudentId(Long,Long)
++ CourseDtoResponse deleteCourseById(Long)
+}
+
+
+
+
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.repository.StudentRepository
+com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.service.StudentService <|.. com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.service.StudentServiceImpl
+com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.CourseDtoResponse +.. com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.CourseDtoResponse$Builder
+com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.StudentDtoResponse +.. com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.dto.StudentDtoResponse$Builder
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.repository.CourseRepository
+com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.service.CourseService <|.. com.example.Spring_Boot_Jpa_ER._12_N_to_N_bidir_jt.service.CourseServiceImpl
+@enduml
