@@ -14,6 +14,9 @@ import lombok.Setter;
 @Entity(name = "abodes")
 public class Abode {
     @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY) with @Id
+    // is not used, since it is not necessary to generate an identifier
+    // for this entity.
     @Column(name = "id")
     private Long id;
     @Column(name = "city")
@@ -24,8 +27,19 @@ public class Abode {
     private String building;
     @Column(name = "apartment")
     private String apartment;
+    // @OneToOne defines a one-to-one association with another entity,
+    // which has a one-to-one multiplicity.
     @OneToOne
+    // @JoinColumn marks a column as a join column
+    // for an entity or item collection association.
     @JoinColumn(name = "id")
+    // @MapsId simplifies One-to-One relationships by allowing two
+    // entities to share a single primary key.
+    // This helps implement the shared primary key strategy,
+    // by telling Hibernate to match the primary key of a child
+    // entity with the primary key of its related parent entity.
+    // @OneToOne and @MapsId indicate that both the source and target
+    // entities share a primary key value.
     @MapsId
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Vendee vendee;
