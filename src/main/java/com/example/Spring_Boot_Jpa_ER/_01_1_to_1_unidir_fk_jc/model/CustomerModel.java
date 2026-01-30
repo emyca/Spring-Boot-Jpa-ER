@@ -14,7 +14,7 @@ public class CustomerModel {
     private String building;
     private String apartment;
 
-    public static CustomerModel getModel(Customer customer) {
+    public CustomerModel getModel(Customer customer) {
         CustomerModel model = new CustomerModel();
         model.setId(customer.getId());
         model.setFirstName(customer.getFirstName());
