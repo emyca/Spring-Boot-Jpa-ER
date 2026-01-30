@@ -42,7 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
                 .reasonPhrase(HttpStatus.CREATED.getReasonPhrase())
                 .message(CustomerDtoResponse
                         .Message.SUCCESS_CREATE_MSG.getMessage())
-                .customer(CustomerModel.getModel(customer))
+                .customer(new CustomerModel().getModel(customer))
                 .build()
                 : new CustomerDtoResponse.Builder()
                 .status(HttpStatus.NO_CONTENT.value())
@@ -58,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
         if (!list.isEmpty()) {
             List<CustomerModel> _list = new ArrayList<>();
             for (Customer customer : list)
-                _list.add(CustomerModel.getModel(customer));
+                _list.add(new CustomerModel().getModel(customer));
             return new CustomerDtoResponse.Builder()
                     .status(HttpStatus.OK.value())
                     .reasonPhrase(HttpStatus.OK.getReasonPhrase())
@@ -88,7 +88,7 @@ public class CustomerServiceImpl implements CustomerService {
                 .message(CustomerDtoResponse
                         .Message.SUCCESS_GET_BY_ID_MSG.getMessage()
                         .formatted(id))
-                .customer(CustomerModel.getModel(customer))
+                .customer(new CustomerModel().getModel(customer))
                 .build()
                 : new CustomerDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
@@ -115,7 +115,7 @@ public class CustomerServiceImpl implements CustomerService {
                     .message(CustomerDtoResponse
                             .Message.SUCCESS_UPDATE_BY_ID_MSG.getMessage()
                             .formatted(id))
-                    .customer(CustomerModel.getModel(customer))
+                    .customer(new CustomerModel().getModel(customer))
                     .build();
         } else
             return new CustomerDtoResponse.Builder()
