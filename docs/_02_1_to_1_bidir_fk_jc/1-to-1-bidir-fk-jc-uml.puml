@@ -29,11 +29,6 @@ class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.controller.BuyerCont
 }
 
 
-class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.mapper.AddressMapper {
-+ Address dtoCreateToEntity(BuyerDtoRequest)
-+ Address dtoUpdateToEntity(BuyerDtoRequest,Address)
-}
-
 class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.service.BuyerServiceImpl {
 - BuyerMapper buyerMapper
 - BuyerRepository buyerRepository
@@ -49,7 +44,9 @@ class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.service.BuyerService
 
 class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.mapper.BuyerMapper {
 + Buyer dtoCreateToEntity(BuyerDtoRequest)
+- Address getAddress(BuyerDtoRequest)
 + Buyer dtoUpdateByIdToEntity(Long,BuyerDtoRequest,Buyer,Address)
+- Address getAddressToUpdate(BuyerDtoRequest,Address)
 }
 
 interface com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.repository.AddressRepository {
@@ -89,10 +86,10 @@ class com.example.Spring_Boot_Jpa_ER._02_1_to_1_bidir_fk_jc.dto.BuyerDtoResponse
 + Builder buyer(BuyerModel)
 + Builder buyerList(List<BuyerModel>)
 + BuyerDtoResponse build()
-+ int status()
 + String message()
 + String reasonPhrase()
 + BuyerModel buyer()
++ int status()
 + List<BuyerModel> buyerList()
 }
 
