@@ -14,9 +14,17 @@ public class BuyerMapper {
         buyer.setFirstName(request.firstName());
         buyer.setLastName(request.lastName());
         buyer.setEmail(request.email());
-        buyer.setAddress(new AddressMapper()
-                .dtoCreateToEntity(request));
+        buyer.setAddress(getAddress(request));
         return buyer;
+    }
+
+    private Address getAddress(BuyerDtoRequest request) {
+        Address address = new Address();
+        address.setCity(request.city());
+        address.setStreet(request.street());
+        address.setBuilding(request.building());
+        address.setApartment(request.apartment());
+        return address;
     }
 
     public Buyer dtoUpdateByIdToEntity(Long id,
@@ -28,8 +36,17 @@ public class BuyerMapper {
         buyerToUpdate.setFirstName(request.firstName());
         buyerToUpdate.setLastName(request.lastName());
         buyerToUpdate.setEmail(request.email());
-        buyerToUpdate.setAddress(new AddressMapper()
-                .dtoUpdateToEntity(request, addressToUpdate));
+        buyerToUpdate.setAddress(
+                getAddressToUpdate(request, addressToUpdate));
         return buyerToUpdate;
+    }
+
+    private Address getAddressToUpdate(BuyerDtoRequest request,
+                                       Address addressToUpdate) {
+        addressToUpdate.setCity(request.city());
+        addressToUpdate.setStreet(request.street());
+        addressToUpdate.setBuilding(request.building());
+        addressToUpdate.setApartment(request.apartment());
+        return addressToUpdate;
     }
 }
