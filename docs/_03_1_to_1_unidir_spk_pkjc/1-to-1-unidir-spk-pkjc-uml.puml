@@ -11,11 +11,6 @@ class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.service.ClientSe
 }
 
 
-class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.mapper.ResidenceMapper {
-+ Residence dtoCreateToEntity(ClientDtoRequest)
-+ Residence dtoUpdateToEntity(ClientDtoRequest,Residence)
-}
-
 class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.ClientDtoRequest {
 - Long id
 - String firstName
@@ -108,11 +103,11 @@ class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.dto.ClientDtoRes
 + Builder client(ClientModel)
 + Builder clientList(List<ClientModel>)
 + ClientDtoResponse build()
-+ int status()
 + String message()
 + String reasonPhrase()
 + ClientModel client()
 + List<ClientModel> clientList()
++ int status()
 }
 
 
@@ -147,7 +142,9 @@ interface com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.repository.R
 }
 class com.example.Spring_Boot_Jpa_ER._03_1_to_1_unidir_spk_pkjc.mapper.ClientMapper {
 + Client dtoCreateToEntity(ClientDtoRequest)
+- Residence getResidence(ClientDtoRequest)
 + Client dtoUpdateByIdToEntity(Long,ClientDtoRequest,Client,Residence)
+- Residence getResidenceToUpdate(ClientDtoRequest,Residence)
 }
 
 
