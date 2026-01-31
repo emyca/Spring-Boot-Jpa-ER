@@ -14,10 +14,17 @@ public class ClientMapper {
         client.setFirstName(request.firstName());
         client.setLastName(request.lastName());
         client.setEmail(request.email());
-        Residence residence = new ResidenceMapper()
-                .dtoCreateToEntity(request);
-        client.setResidence(residence);
+        client.setResidence(getResidence(request));
         return client;
+    }
+
+    private Residence getResidence(ClientDtoRequest request) {
+        Residence residence = new Residence();
+        residence.setCity(request.city());
+        residence.setStreet(request.street());
+        residence.setBuilding(request.building());
+        residence.setApartment(request.apartment());
+        return residence;
     }
 
     public Client dtoUpdateByIdToEntity(Long id,
@@ -29,9 +36,17 @@ public class ClientMapper {
         clientToUpdate.setFirstName(request.firstName());
         clientToUpdate.setLastName(request.lastName());
         clientToUpdate.setEmail(request.email());
-        Residence residence = new ResidenceMapper()
-                .dtoUpdateToEntity(request, residenceToUpdate);
-        clientToUpdate.setResidence(residence);
+        clientToUpdate.setResidence(
+                getResidenceToUpdate(request, residenceToUpdate));
         return clientToUpdate;
+    }
+
+    private Residence getResidenceToUpdate(ClientDtoRequest request,
+                                       Residence residenceToUpdate) {
+        residenceToUpdate.setCity(request.city());
+        residenceToUpdate.setStreet(request.street());
+        residenceToUpdate.setBuilding(request.building());
+        residenceToUpdate.setApartment(request.apartment());
+        return residenceToUpdate;
     }
 }
