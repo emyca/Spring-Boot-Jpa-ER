@@ -13,7 +13,9 @@ class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.service.CustomerSer
 
 class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.mapper.CustomerMapper {
 + Customer dtoCreateToEntity(CustomerDtoRequest)
+- Location getLocation(CustomerDtoRequest)
 + Customer dtoUpdateByIdToEntity(Long,CustomerDtoRequest,Customer,Location)
+- Location getLocationToUpdate(CustomerDtoRequest,Location)
 }
 
 class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.dto.CustomerDtoResponse {
@@ -42,11 +44,11 @@ class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.dto.CustomerDtoResp
 + Builder customer(CustomerModel)
 + Builder customerList(List<CustomerModel>)
 + CustomerDtoResponse build()
-+ int status()
 + String message()
 + CustomerModel customer()
 + String reasonPhrase()
 + List<CustomerModel> customerList()
++ int status()
 }
 
 
@@ -75,11 +77,6 @@ enum com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.dto.Message {
 +  SUCCESS_UPDATE_BY_ID_MSG
 +  SUCCESS_DELETE_BY_ID_MSG
 - String message
-}
-
-class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.mapper.LocationMapper {
-+ Location dtoCreateToEntity(CustomerDtoRequest)
-+ Location dtoUpdateToEntity(CustomerDtoRequest,Location)
 }
 
 class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.entity.Location {
@@ -131,7 +128,7 @@ class com.example.Spring_Boot_Jpa_ER._01_1_to_1_unidir_fk_jc.model.CustomerModel
 - String street
 - String building
 - String apartment
-+ {static} CustomerModel getModel(Customer)
++ CustomerModel getModel(Customer)
 }
 
 
