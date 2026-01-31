@@ -14,9 +14,17 @@ public class CustomerMapper {
         customer.setFirstName(request.firstName());
         customer.setLastName(request.lastName());
         customer.setEmail(request.email());
-        customer.setLocation(new LocationMapper()
-                .dtoCreateToEntity(request));
+        customer.setLocation(getLocation(request));
         return customer;
+    }
+
+    private Location getLocation(CustomerDtoRequest request) {
+        Location location = new Location();
+        location.setCity(request.city());
+        location.setStreet(request.street());
+        location.setBuilding(request.building());
+        location.setApartment(request.apartment());
+        return location;
     }
 
     public Customer dtoUpdateByIdToEntity(Long id,
@@ -28,8 +36,16 @@ public class CustomerMapper {
         customerToUpdate.setFirstName(request.firstName());
         customerToUpdate.setLastName(request.lastName());
         customerToUpdate.setEmail(request.email());
-        customerToUpdate.setLocation(new LocationMapper()
-                .dtoUpdateToEntity(request, locationToUpdate));
+        customerToUpdate.setLocation(getLocationToUpdate(request, locationToUpdate));
         return customerToUpdate;
+    }
+
+    private Location getLocationToUpdate(CustomerDtoRequest request,
+                                      Location locationToUpdate) {
+        locationToUpdate.setCity(request.city());
+        locationToUpdate.setStreet(request.street());
+        locationToUpdate.setBuilding(request.building());
+        locationToUpdate.setApartment(request.apartment());
+        return locationToUpdate;
     }
 }
