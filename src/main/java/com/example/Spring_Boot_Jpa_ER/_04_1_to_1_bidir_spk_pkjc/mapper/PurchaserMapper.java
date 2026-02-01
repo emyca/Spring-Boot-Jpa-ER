@@ -9,15 +9,22 @@ import org.springframework.stereotype.Component;
 public class PurchaserMapper {
 
     public Purchaser dtoCreateToEntity(PurchaserDtoRequest request) {
-        Purchaser purchaser = new Purchaser();
-        purchaser.setId(request.id());
-        purchaser.setFirstName(request.firstName());
-        purchaser.setLastName(request.lastName());
-        purchaser.setEmail(request.email());
-        Habitation habitation = new HabitationMapper()
-                .dtoCreateToEntity(request);
-        purchaser.setHabitation(habitation);
-        return purchaser;
+        return Purchaser.builder()
+                .id(request.id())
+                .firstName(request.firstName())
+                .lastName(request.lastName())
+                .email(request.email())
+                .habitation(getHabitation(request))
+                .build();
+    }
+
+    private Habitation getHabitation(PurchaserDtoRequest request) {
+        return Habitation.builder()
+                .city(request.city())
+                .street(request.street())
+                .building(request.building())
+                .apartment(request.apartment())
+                .build();
     }
 
     public Purchaser dtoUpdateByIdToEntity(Long id,
@@ -29,9 +36,17 @@ public class PurchaserMapper {
         purchaserToUpdate.setFirstName(request.firstName());
         purchaserToUpdate.setLastName(request.lastName());
         purchaserToUpdate.setEmail(request.email());
-        Habitation habitation = new HabitationMapper()
-                .dtoUpdateToEntity(request, habitationToUpdate);
-        purchaserToUpdate.setHabitation(habitation);
+        purchaserToUpdate.setHabitation(
+                getHabitationToUpdate(request, habitationToUpdate));
         return purchaserToUpdate;
+    }
+
+    public Habitation getHabitationToUpdate(PurchaserDtoRequest request,
+                                            Habitation habitationToUpdate) {
+        habitationToUpdate.setCity(request.city());
+        habitationToUpdate.setStreet(request.street());
+        habitationToUpdate.setBuilding(request.building());
+        habitationToUpdate.setApartment(request.apartment());
+        return habitationToUpdate;
     }
 }
