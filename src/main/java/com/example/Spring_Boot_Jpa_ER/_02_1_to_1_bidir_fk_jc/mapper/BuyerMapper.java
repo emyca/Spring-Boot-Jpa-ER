@@ -9,22 +9,22 @@ import org.springframework.stereotype.Component;
 public class BuyerMapper {
 
     public Buyer dtoCreateToEntity(BuyerDtoRequest request) {
-        Buyer buyer = new Buyer();
-        buyer.setId(request.id());
-        buyer.setFirstName(request.firstName());
-        buyer.setLastName(request.lastName());
-        buyer.setEmail(request.email());
-        buyer.setAddress(getAddress(request));
-        return buyer;
+        return Buyer.builder()
+                .id(request.id())
+                .firstName(request.firstName())
+                .lastName(request.lastName())
+                .email(request.email())
+                .address(getAddress(request))
+                .build();
     }
 
     private Address getAddress(BuyerDtoRequest request) {
-        Address address = new Address();
-        address.setCity(request.city());
-        address.setStreet(request.street());
-        address.setBuilding(request.building());
-        address.setApartment(request.apartment());
-        return address;
+        return Address.builder()
+                .city(request.city())
+                .street(request.street())
+                .building(request.building())
+                .apartment(request.apartment())
+                .build();
     }
 
     public Buyer dtoUpdateByIdToEntity(Long id,
