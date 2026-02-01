@@ -9,22 +9,22 @@ import org.springframework.stereotype.Component;
 public class CustomerMapper {
 
     public Customer dtoCreateToEntity(CustomerDtoRequest request) {
-        Customer customer = new Customer();
-        customer.setId(request.id());
-        customer.setFirstName(request.firstName());
-        customer.setLastName(request.lastName());
-        customer.setEmail(request.email());
-        customer.setLocation(getLocation(request));
-        return customer;
+        return new Customer(
+                request.id(),
+                request.firstName(),
+                request.lastName(),
+                request.email(),
+                getLocation(request)
+        );
     }
 
     private Location getLocation(CustomerDtoRequest request) {
-        Location location = new Location();
-        location.setCity(request.city());
-        location.setStreet(request.street());
-        location.setBuilding(request.building());
-        location.setApartment(request.apartment());
-        return location;
+        return Location.builder()
+                .city(request.city())
+                .street(request.street())
+                .building(request.building())
+                .apartment(request.apartment())
+                .build();
     }
 
     public Customer dtoUpdateByIdToEntity(Long id,
@@ -41,7 +41,7 @@ public class CustomerMapper {
     }
 
     private Location getLocationToUpdate(CustomerDtoRequest request,
-                                      Location locationToUpdate) {
+                                         Location locationToUpdate) {
         locationToUpdate.setCity(request.city());
         locationToUpdate.setStreet(request.street());
         locationToUpdate.setBuilding(request.building());
