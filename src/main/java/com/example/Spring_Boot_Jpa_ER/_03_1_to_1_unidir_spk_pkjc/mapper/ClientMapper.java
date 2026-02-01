@@ -9,22 +9,22 @@ import org.springframework.stereotype.Component;
 public class ClientMapper {
 
     public Client dtoCreateToEntity(ClientDtoRequest request) {
-        Client client = new Client();
-        client.setId(request.id());
-        client.setFirstName(request.firstName());
-        client.setLastName(request.lastName());
-        client.setEmail(request.email());
-        client.setResidence(getResidence(request));
-        return client;
+        return Client.builder()
+                .id(request.id())
+                .firstName(request.firstName())
+                .lastName(request.lastName())
+                .email(request.email())
+                .residence(getResidence(request))
+                .build();
     }
 
     private Residence getResidence(ClientDtoRequest request) {
-        Residence residence = new Residence();
-        residence.setCity(request.city());
-        residence.setStreet(request.street());
-        residence.setBuilding(request.building());
-        residence.setApartment(request.apartment());
-        return residence;
+        return Residence.builder()
+                .city(request.city())
+                .street(request.street())
+                .building(request.building())
+                .apartment(request.apartment())
+                .build();
     }
 
     public Client dtoUpdateByIdToEntity(Long id,
@@ -42,7 +42,7 @@ public class ClientMapper {
     }
 
     private Residence getResidenceToUpdate(ClientDtoRequest request,
-                                       Residence residenceToUpdate) {
+                                           Residence residenceToUpdate) {
         residenceToUpdate.setCity(request.city());
         residenceToUpdate.setStreet(request.street());
         residenceToUpdate.setBuilding(request.building());
