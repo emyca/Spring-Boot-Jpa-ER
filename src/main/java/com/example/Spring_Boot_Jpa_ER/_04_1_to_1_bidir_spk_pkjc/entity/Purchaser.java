@@ -1,15 +1,13 @@
 package com.example.Spring_Boot_Jpa_ER._04_1_to_1_bidir_spk_pkjc.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
+@Builder
 @Entity(name = "purchasers")
 public class Purchaser {
     @Id
