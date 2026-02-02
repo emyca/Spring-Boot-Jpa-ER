@@ -9,15 +9,22 @@ import org.springframework.stereotype.Component;
 public class ShopperMapper {
 
     public Shopper dtoCreateToEntity(ShopperDtoRequest request) {
-        Shopper shopper = new Shopper();
-        shopper.setId(request.id());
-        shopper.setFirstName(request.firstName());
-        shopper.setLastName(request.lastName());
-        shopper.setEmail(request.email());
-        Place place = new PlaceMapper()
-                .dtoCreateToEntity(request);
-        shopper.setPlace(place);
-        return shopper;
+        return Shopper.builder()
+                .id(request.id())
+                .firstName(request.firstName())
+                .lastName(request.lastName())
+                .email(request.email())
+                .place(getPlace(request))
+                .build();
+    }
+
+    private Place getPlace(ShopperDtoRequest request) {
+        return Place.builder()
+                .city(request.city())
+                .street(request.street())
+                .building(request.building())
+                .apartment(request.apartment())
+                .build();
     }
 
     public Shopper dtoUpdateByIdToEntity(Long id,
@@ -29,9 +36,17 @@ public class ShopperMapper {
         shopperToUpdate.setFirstName(request.firstName());
         shopperToUpdate.setLastName(request.lastName());
         shopperToUpdate.setEmail(request.email());
-        Place place = new PlaceMapper()
-                .dtoUpdateToEntity(request, placeToUpdate);
-        shopperToUpdate.setPlace(place);
+        shopperToUpdate.setPlace(
+                getPlaceToUpdate(request, placeToUpdate));
         return shopperToUpdate;
+    }
+
+    private Place getPlaceToUpdate(ShopperDtoRequest request,
+                                   Place placeToUpdate) {
+        placeToUpdate.setCity(request.city());
+        placeToUpdate.setStreet(request.street());
+        placeToUpdate.setBuilding(request.building());
+        placeToUpdate.setApartment(request.apartment());
+        return placeToUpdate;
     }
 }
