@@ -2,15 +2,13 @@ package com.example.Spring_Boot_Jpa_ER._05_1_to_1_jt.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
+@Builder
 @Entity(name = "places")
 public class Place {
     @Id
