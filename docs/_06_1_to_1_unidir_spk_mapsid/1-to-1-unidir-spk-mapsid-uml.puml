@@ -92,7 +92,9 @@ enum com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.dto.Message {
 
 class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.mapper.ConsumerMapper {
 + Consumer dtoCreateToEntity(ConsumerDtoRequest)
+- Domicile getDomicile(ConsumerDtoRequest)
 + Consumer dtoUpdateByIdToEntity(Long,ConsumerDtoRequest,Consumer,Domicile)
+- Domicile getDomicileToUpdate(ConsumerDtoRequest,Domicile)
 }
 
 class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.entity.Domicile {
@@ -124,11 +126,6 @@ class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.service.Consum
 + ConsumerDtoResponse deleteConsumerById(Long)
 }
 
-
-class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.mapper.DomicileMapper {
-+ Domicile dtoCreateToEntity(ConsumerDtoRequest)
-+ Domicile dtoUpdateToEntity(ConsumerDtoRequest,Domicile)
-}
 
 class com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.dto.ConsumerDtoRequest {
 - Long id
