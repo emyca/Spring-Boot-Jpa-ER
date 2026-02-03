@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 public class PostMapper {
 
     public Post dtoCreateToEntity(PostDtoRequest request) {
-        Post post = new Post();
-        post.setId(request.id());
-        post.setTitle(request.title());
-        post.setContent(request.content());
-        return post;
+        return Post.builder()
+                .id(request.id())
+                .title(request.title())
+                .content(request.content())
+                .build();
     }
 
     public Post dtoUpdateByIdToEntity(Long id,
