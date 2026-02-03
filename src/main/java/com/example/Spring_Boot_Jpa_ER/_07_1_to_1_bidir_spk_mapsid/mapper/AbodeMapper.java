@@ -8,20 +8,11 @@ import org.springframework.stereotype.Component;
 public class AbodeMapper {
 
     public Abode dtoCreateToEntity(VendeeDtoRequest request) {
-        Abode abode = new Abode();
-        abode.setCity(request.city());
-        abode.setStreet(request.street());
-        abode.setBuilding(request.building());
-        abode.setApartment(request.apartment());
-        return abode;
-    }
-
-    public Abode dtoUpdateToEntity(VendeeDtoRequest request,
-                                   Abode abodeToUpdate) {
-        abodeToUpdate.setCity(request.city());
-        abodeToUpdate.setStreet(request.street());
-        abodeToUpdate.setBuilding(request.building());
-        abodeToUpdate.setApartment(request.apartment());
-        return abodeToUpdate;
+        return Abode.builder()
+                .city(request.city())
+                .street(request.street())
+                .building(request.building())
+                .apartment(request.apartment())
+                .build();
     }
 }
