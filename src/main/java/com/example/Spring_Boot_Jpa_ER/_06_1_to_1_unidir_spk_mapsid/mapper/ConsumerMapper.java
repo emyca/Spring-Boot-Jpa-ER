@@ -9,15 +9,22 @@ import org.springframework.stereotype.Component;
 public class ConsumerMapper {
 
     public Consumer dtoCreateToEntity(ConsumerDtoRequest request) {
-        Consumer consumer = new Consumer();
-        consumer.setId(request.id());
-        consumer.setFirstName(request.firstName());
-        consumer.setLastName(request.lastName());
-        consumer.setEmail(request.email());
-        Domicile domicile = new DomicileMapper()
-                .dtoCreateToEntity(request);
-        consumer.setDomicile(domicile);
-        return consumer;
+        return Consumer.builder()
+                .id(request.id())
+                .firstName(request.firstName())
+                .lastName(request.lastName())
+                .email(request.email())
+                .domicile(getDomicile(request))
+                .build();
+    }
+
+    private Domicile getDomicile(ConsumerDtoRequest request) {
+        return Domicile.builder()
+                .city(request.city())
+                .street(request.street())
+                .building(request.building())
+                .apartment(request.apartment())
+                .build();
     }
 
     public Consumer dtoUpdateByIdToEntity(Long id,
@@ -29,9 +36,17 @@ public class ConsumerMapper {
         consumerToUpdate.setFirstName(request.firstName());
         consumerToUpdate.setLastName(request.lastName());
         consumerToUpdate.setEmail(request.email());
-        Domicile residence = new DomicileMapper()
-                .dtoUpdateToEntity(request, domicileToUpdate);
-        consumerToUpdate.setDomicile(residence);
+        consumerToUpdate.setDomicile(
+                getDomicileToUpdate(request, domicileToUpdate));
         return consumerToUpdate;
+    }
+
+    private Domicile getDomicileToUpdate(ConsumerDtoRequest request,
+                                         Domicile domicileToUpdate) {
+        domicileToUpdate.setCity(request.city());
+        domicileToUpdate.setStreet(request.street());
+        domicileToUpdate.setBuilding(request.building());
+        domicileToUpdate.setApartment(request.apartment());
+        return domicileToUpdate;
     }
 }
