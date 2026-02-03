@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 public class VendeeMapper {
 
     public Vendee dtoCreateToEntity(VendeeDtoRequest request) {
-        Vendee vendee = new Vendee();
-        vendee.setFirstName(request.firstName());
-        vendee.setLastName(request.lastName());
-        vendee.setEmail(request.email());
-        vendee.setAbode(null);
-        return vendee;
+        return Vendee.builder()
+                .firstName(request.firstName())
+                .lastName(request.lastName())
+                .email(request.email())
+                .abode(null)
+                .build();
     }
 
     public Vendee dtoUpdateByIdToEntity(Long id,
@@ -26,9 +26,17 @@ public class VendeeMapper {
         vendeeToUpdate.setFirstName(request.firstName());
         vendeeToUpdate.setLastName(request.lastName());
         vendeeToUpdate.setEmail(request.email());
-        Abode abode = new AbodeMapper()
-                .dtoUpdateToEntity(request, abodeToUpdate);
-        vendeeToUpdate.setAbode(abode);
+        vendeeToUpdate.setAbode(
+                getAbodeToUpdate(request, abodeToUpdate));
         return vendeeToUpdate;
+    }
+
+    private Abode getAbodeToUpdate(VendeeDtoRequest request,
+                                   Abode abodeToUpdate) {
+        abodeToUpdate.setCity(request.city());
+        abodeToUpdate.setStreet(request.street());
+        abodeToUpdate.setBuilding(request.building());
+        abodeToUpdate.setApartment(request.apartment());
+        return abodeToUpdate;
     }
 }
