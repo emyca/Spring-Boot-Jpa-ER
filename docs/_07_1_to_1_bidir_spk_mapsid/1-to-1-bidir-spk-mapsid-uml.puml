@@ -25,10 +25,10 @@ class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.dto.VendeeDtoRe
 + Builder vendee(VendeeModel)
 + Builder vendeeList(List<VendeeModel>)
 + VendeeDtoResponse build()
-+ int status()
 + String message()
 + List<VendeeModel> vendeeList()
 + String reasonPhrase()
++ int status()
 + VendeeModel vendee()
 }
 
@@ -103,6 +103,7 @@ class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.model.VendeeMod
 class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.mapper.VendeeMapper {
 + Vendee dtoCreateToEntity(VendeeDtoRequest)
 + Vendee dtoUpdateByIdToEntity(Long,VendeeDtoRequest,Vendee,Abode)
+- Abode getAbodeToUpdate(VendeeDtoRequest,Abode)
 }
 
 class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.entity.Vendee {
@@ -135,7 +136,6 @@ class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.entity.Abode {
 
 class com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.mapper.AbodeMapper {
 + Abode dtoCreateToEntity(VendeeDtoRequest)
-+ Abode dtoUpdateToEntity(VendeeDtoRequest,Abode)
 }
 
 interface com.example.Spring_Boot_Jpa_ER._07_1_to_1_bidir_spk_mapsid.repository.VendeeRepository {
