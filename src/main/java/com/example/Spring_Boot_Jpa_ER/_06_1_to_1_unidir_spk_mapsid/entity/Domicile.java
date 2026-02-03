@@ -1,15 +1,13 @@
 package com.example.Spring_Boot_Jpa_ER._06_1_to_1_unidir_spk_mapsid.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
+@Builder
 @Entity(name = "domiciles")
 public class Domicile {
     @Id
