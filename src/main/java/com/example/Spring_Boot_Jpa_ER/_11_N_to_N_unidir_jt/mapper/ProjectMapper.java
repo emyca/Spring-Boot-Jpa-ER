@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 public class ProjectMapper {
 
     public Project dtoCreateToEntity(ProjectDtoRequest request) {
-        Project project = new Project();
-        project.setId(request.id());
-        project.setName(request.name());
-        return project;
+        return Project.builder()
+                .id(request.id())
+                .name(request.name())
+                .build();
     }
 
     public Project dtoUpdateByIdToEntity(ProjectDtoRequest request,
