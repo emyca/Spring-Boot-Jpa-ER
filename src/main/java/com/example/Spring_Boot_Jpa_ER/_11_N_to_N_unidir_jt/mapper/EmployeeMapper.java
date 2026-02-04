@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 public class EmployeeMapper {
 
     public Employee dtoCreateToEntity(EmployeeDtoRequest request) {
-        Employee employee = new Employee();
-        employee.setId(request.id());
-        employee.setFirstName(request.firstName());
-        employee.setLastName(request.lastName());
-        employee.setEmail(request.email());
-        return employee;
+        return Employee.builder()
+                .id(request.id())
+                .firstName(request.firstName())
+                .lastName(request.lastName())
+                .email(request.email())
+                .build();
     }
 
     public Employee dtoUpdateByIdToEntity(EmployeeDtoRequest request,
