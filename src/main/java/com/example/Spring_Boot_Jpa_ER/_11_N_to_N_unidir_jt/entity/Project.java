@@ -1,15 +1,13 @@
 package com.example.Spring_Boot_Jpa_ER._11_N_to_N_unidir_jt.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
+@Builder
 @Entity(name = "projects")
 public class Project {
     @Id
