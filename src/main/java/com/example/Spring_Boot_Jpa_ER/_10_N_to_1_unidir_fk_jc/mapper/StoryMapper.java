@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 public class StoryMapper {
 
     public Story dtoCreateToEntity(StoryDtoRequest request) {
-        Story story = new Story();
-        story.setId(request.id());
-        story.setTitle(request.title());
-        story.setContent(request.content());
-        return story;
+        return Story.builder()
+                .id(request.id())
+                .title(request.title())
+                .content(request.content())
+                .build();
     }
 
     public Story dtoUpdateByIdToEntity(StoryDtoRequest request,
