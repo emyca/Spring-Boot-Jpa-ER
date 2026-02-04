@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 public class CourseMapper {
 
     public Course dtoCreateToEntity(CourseDtoRequest request) {
-        Course course = new Course();
-        course.setId(request.id());
-        course.setName(request.name());
-        return course;
+        return Course.builder()
+                .id(request.id())
+                .name(request.name())
+                .build();
     }
 
     public Course dtoUpdateByIdToEntity(CourseDtoRequest request,
