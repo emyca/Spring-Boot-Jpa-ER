@@ -79,16 +79,15 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientDtoResponse getClientById(Long id) {
-        Client client = clientRepository.findById(id)
-                .orElse(null);
-        return (client != null)
+        Optional<Client> optional = clientRepository.findById(id);
+        return (optional.isPresent())
                 ? new ClientDtoResponse.Builder()
                 .status(HttpStatus.OK.value())
                 .reasonPhrase(HttpStatus.OK.getReasonPhrase())
                 .message(ClientDtoResponse
                         .Message.SUCCESS_GET_BY_ID_MSG.getMessage()
                         .formatted(id))
-                .client(ClientModel.getModel(client))
+                .client(ClientModel.getModel(optional.get()))
                 .build()
                 : new ClientDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
