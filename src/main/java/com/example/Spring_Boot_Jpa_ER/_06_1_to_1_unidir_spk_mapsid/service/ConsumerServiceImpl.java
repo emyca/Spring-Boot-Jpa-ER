@@ -79,16 +79,15 @@ public class ConsumerServiceImpl implements ConsumerService {
 
     @Override
     public ConsumerDtoResponse getConsumerById(Long id) {
-        Consumer consumer = consumerRepository.findById(id)
-                .orElse(null);
-        return (consumer != null)
+        Optional<Consumer> optional = consumerRepository.findById(id);
+        return (optional.isPresent())
                 ? new ConsumerDtoResponse.Builder()
                 .status(HttpStatus.OK.value())
                 .reasonPhrase(HttpStatus.OK.getReasonPhrase())
                 .message(ConsumerDtoResponse
                         .Message.SUCCESS_GET_BY_ID_MSG.getMessage()
                         .formatted(id))
-                .consumer(ConsumerModel.getModel(consumer))
+                .consumer(ConsumerModel.getModel(optional.get()))
                 .build()
                 : new ConsumerDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
