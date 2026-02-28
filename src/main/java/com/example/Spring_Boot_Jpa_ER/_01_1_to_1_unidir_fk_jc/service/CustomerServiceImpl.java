@@ -79,16 +79,15 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDtoResponse getCustomerById(Long id) {
-        Customer customer = customerRepository.findById(id)
-                .orElse(null);
-        return (customer != null)
+        Optional<Customer> optional = customerRepository.findById(id);
+        return (optional.isPresent())
                 ? new CustomerDtoResponse.Builder()
                 .status(HttpStatus.OK.value())
                 .reasonPhrase(HttpStatus.OK.getReasonPhrase())
                 .message(CustomerDtoResponse
                         .Message.SUCCESS_GET_BY_ID_MSG.getMessage()
                         .formatted(id))
-                .customer(new CustomerModel().getModel(customer))
+                .customer(new CustomerModel().getModel(optional.get()))
                 .build()
                 : new CustomerDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
