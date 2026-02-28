@@ -73,16 +73,15 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostDtoResponse getPostById(Long id) {
-        Post post = postRepository.findById(id)
-                .orElse(null);
-        return (post != null)
+        Optional<Post> optional = postRepository.findById(id);
+        return (optional.isPresent())
                 ? new PostDtoResponse.Builder()
                 .status(HttpStatus.OK.value())
                 .reasonPhrase(HttpStatus.OK.getReasonPhrase())
                 .message(PostDtoResponse
                         .Message.SUCCESS_GET_BY_ID_MSG.getMessage()
                         .formatted(id))
-                .post(PostModel.getModel(post))
+                .post(PostModel.getModel(optional.get()))
                 .build()
                 : new PostDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
