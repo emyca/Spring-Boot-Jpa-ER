@@ -102,16 +102,15 @@ public class BuyerServiceImpl implements BuyerService {
 
     @Override
     public BuyerDtoResponse getBuyerById(Long id) {
-        Buyer buyer = buyerRepository.findById(id)
-                .orElse(null);
-        return (buyer != null)
+        Optional<Buyer> optional = buyerRepository.findById(id);
+        return (optional.isPresent())
                 ? new BuyerDtoResponse.Builder()
                 .status(HttpStatus.OK.value())
                 .reasonPhrase(HttpStatus.OK.getReasonPhrase())
                 .message(BuyerDtoResponse
                         .Message.SUCCESS_GET_BY_ID_MSG.getMessage()
                         .formatted(id))
-                .buyer(BuyerModel.getModel(buyer))
+                .buyer(BuyerModel.getModel(optional.get()))
                 .build()
                 : new BuyerDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
