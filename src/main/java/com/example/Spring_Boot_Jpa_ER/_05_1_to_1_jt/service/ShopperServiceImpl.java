@@ -103,16 +103,15 @@ public class ShopperServiceImpl implements ShopperService {
 
     @Override
     public ShopperDtoResponse getShopperById(Long id) {
-        Shopper shopper = shopperRepository.findById(id)
-                .orElse(null);
-        return (shopper != null)
+        Optional<Shopper> optional = shopperRepository.findById(id);
+        return (optional.isPresent())
                 ? new ShopperDtoResponse.Builder()
                 .status(HttpStatus.OK.value())
                 .reasonPhrase(HttpStatus.OK.getReasonPhrase())
                 .message(ShopperDtoResponse
                         .Message.SUCCESS_GET_BY_ID_MSG.getMessage()
                         .formatted(id))
-                .shopper(ShopperModel.getModel(shopper))
+                .shopper(ShopperModel.getModel(optional.get()))
                 .build()
                 : new ShopperDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
