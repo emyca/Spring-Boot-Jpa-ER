@@ -102,16 +102,15 @@ public class PurchaserServiceImpl implements PurchaserService {
 
     @Override
     public PurchaserDtoResponse getPurchaserById(Long id) {
-        Purchaser purchaser = purchaserRepository.findById(id)
-                .orElse(null);
-        return (purchaser != null)
+        Optional<Purchaser> optional = purchaserRepository.findById(id);
+        return (optional.isPresent())
                 ? new PurchaserDtoResponse.Builder()
                 .status(HttpStatus.OK.value())
                 .reasonPhrase(HttpStatus.OK.getReasonPhrase())
                 .message(PurchaserDtoResponse
                         .Message.SUCCESS_GET_BY_ID_MSG.getMessage()
                         .formatted(id))
-                .purchaser(PurchaserModel.getModel(purchaser))
+                .purchaser(PurchaserModel.getModel(optional.get()))
                 .build()
                 : new PurchaserDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
