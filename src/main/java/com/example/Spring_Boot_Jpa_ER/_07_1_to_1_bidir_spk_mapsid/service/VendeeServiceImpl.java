@@ -124,16 +124,15 @@ public class VendeeServiceImpl implements VendeeService {
 
     @Override
     public VendeeDtoResponse getVendeeById(Long id) {
-        Vendee vendee = vendeeRepository.findById(id)
-                .orElse(null);
-        return (vendee != null)
+        Optional<Vendee> optional = vendeeRepository.findById(id);
+        return (optional.isPresent())
                 ? new VendeeDtoResponse.Builder()
                 .status(HttpStatus.OK.value())
                 .reasonPhrase(HttpStatus.OK.getReasonPhrase())
                 .message(VendeeDtoResponse
                         .Message.SUCCESS_GET_BY_ID_MSG.getMessage()
                         .formatted(id))
-                .vendee(VendeeModel.getModel(vendee))
+                .vendee(VendeeModel.getModel(optional.get()))
                 .build()
                 : new VendeeDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
