@@ -73,16 +73,15 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public ArticleDtoResponse getArticleById(Long id) {
-        Article article = articleRepository.findById(id)
-                .orElse(null);
-        return (article != null)
+        Optional<Article> optional = articleRepository.findById(id);
+        return (optional.isPresent())
                 ? new ArticleDtoResponse.Builder()
                 .status(HttpStatus.OK.value())
                 .reasonPhrase(HttpStatus.OK.getReasonPhrase())
                 .message(ArticleDtoResponse
                         .Message.SUCCESS_GET_BY_ID_MSG.getMessage()
                         .formatted(id))
-                .article(ArticleModel.getModel(article))
+                .article(ArticleModel.getModel(optional.get()))
                 .build()
                 : new ArticleDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
@@ -95,20 +94,19 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public ArticleDtoResponse updateArticleById(Long id, ArticleDtoRequest request) {
-        Optional<Article> articleOptional = articleRepository.findById(id);
-        Article article = articleOptional.map(_article ->
+        Optional<Article> optional = articleRepository.findById(id)
+                .map(article ->
                         articleRepository.saveAndFlush(
                                 articleMapper.dtoUpdateByIdToEntity(
-                                        id, request, _article)))
-                .orElse(null);
-        return (article != null)
+                                        id, request, article)));
+        return (optional.isPresent())
                 ? new ArticleDtoResponse.Builder()
                 .status(HttpStatus.OK.value())
                 .reasonPhrase(HttpStatus.OK.getReasonPhrase())
                 .message(ArticleDtoResponse
                         .Message.SUCCESS_UPDATE_BY_ID_MSG.getMessage()
                         .formatted(id))
-                .article(ArticleModel.getModel(article))
+                .article(ArticleModel.getModel(optional.get()))
                 .build()
                 : new ArticleDtoResponse.Builder()
                 .status(HttpStatus.NOT_FOUND.value())
